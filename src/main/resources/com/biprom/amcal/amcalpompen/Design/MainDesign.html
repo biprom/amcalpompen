@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout size-full>
+   <vaadin-label style-name="large light" plain-text>
+     Amcal Dashboard 
+   </vaadin-label>
+   <vaadin-horizontal-layout width-full>
+    <vaadin-button style-name="primary" plain-text _id="zoekButton">
+      Zoek Tickets 
+    </vaadin-button>
+    <vaadin-button style-name="primary" plain-text _id="nieuwButton">
+      Nieuw Ticket 
+    </vaadin-button>
+    <vaadin-button style-name="primary" plain-text _id="uitwerkingButton">
+      Uitwerking Ticket 
+    </vaadin-button>
+    <vaadin-button style-name="primary" plain-text _id="invoegButton">
+      Invoegen Gegevens 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-panel size-full _id="subPanel" :expand></vaadin-panel>
+  </vaadin-vertical-layout>
+ </body>
+</html>

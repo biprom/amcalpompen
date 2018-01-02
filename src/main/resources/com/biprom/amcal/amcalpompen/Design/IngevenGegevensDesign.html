@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout>
+   <vaadin-horizontal-layout>
+    <vaadin-text-field caption="Naam Klant" _id="tfZoekKlant"></vaadin-text-field>
+    <vaadin-button description="Zoek klant" style-name="friendly" plain-text _id="bZoekKlant" :bottom :center>
+      Zoek 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-grid width-full data-item-type="com.biprom.amcal.amcalpompen.Entities.Klanten" _id="listZoekKlant">
+    <table>
+     <colgroup>
+      <col column-id="bedrijfsNaam" sortable>
+      <col column-id="afdeling" sortable>
+     </colgroup>
+     <thead>
+      <tr default>
+       <th plain-text column-ids="bedrijfsNaam">BedrijfsNaam</th>
+       <th plain-text column-ids="afdeling">Afdeling</th>
+      </tr>
+     </thead>
+     <tbody></tbody>
+    </table>
+   </vaadin-grid>
+   <vaadin-panel>
+    <vaadin-tab-sheet _id="invulTab"></vaadin-tab-sheet>
+   </vaadin-panel>
+  </vaadin-vertical-layout>
+ </body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout>
+   <vaadin-horizontal-layout icon="fonticon://Vaadin-Icons/e641">
+    <vaadin-text-field caption="bedrijfsnaam" _id="tfBedrijfsNaam"></vaadin-text-field>
+    <vaadin-text-field caption="afdeling" _id="tfAfdeling"></vaadin-text-field>
+   </vaadin-horizontal-layout>
+   <vaadin-vertical-layout icon="fonticon://Vaadin-Icons/e7dc" caption="Facturatie adres" size-auto>
+    <vaadin-horizontal-layout>
+     <vaadin-text-field caption="Straat" _id="tfFacStraat"></vaadin-text-field>
+     <vaadin-text-field caption="Nummer" _id="tfFacNummer"></vaadin-text-field>
+     <vaadin-text-field caption="Bus" _id="tfFacBus"></vaadin-text-field>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout>
+     <vaadin-text-field caption="Postcode" _id="tfFacPostCode"></vaadin-text-field>
+     <vaadin-text-field caption="Stad" _id="tfFacStad"></vaadin-text-field>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout>
+     <vaadin-text-field caption="Land" _id="tfFacLand"></vaadin-text-field>
+    </vaadin-horizontal-layout>
+    <vaadin-text-area caption="Commentaar bij facturatie adres" width-full _id="tfFacCommentaar"></vaadin-text-area>
+    <vaadin-button style-name="friendly" plain-text _id="bKlantOpslaan">
+      Klant opslaan in bestand 
+    </vaadin-button>
+   </vaadin-vertical-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>

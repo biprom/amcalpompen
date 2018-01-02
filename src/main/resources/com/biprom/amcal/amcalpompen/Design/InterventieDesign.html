@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-panel>
+   <vaadin-vertical-layout>
+    <vaadin-horizontal-layout width-full>
+     <vaadin-combo-box caption="Aanvrager" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Facturatie adres" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Interventie adres" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Toewijzing personeel inplanning" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Toewijzing hoofdtechnieker" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width-full>
+     <vaadin-text-area caption="Pomptype" width-full :expand></vaadin-text-area>
+     <vaadin-text-area caption="Sturing" width-full :expand></vaadin-text-area>
+     <vaadin-text-area caption="Klacht" width-full :expand></vaadin-text-area>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width-full>
+     <vaadin-text-area caption="Opmerkingen klant bij Interventie" width-full :expand></vaadin-text-area>
+     <vaadin-text-area caption="Interne opmerkingen bij interventie" width-full :expand></vaadin-text-area>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width-full>
+     <vaadin-vertical-layout size-auto>
+      <vaadin-combo-box caption="Prioriteit" data-item-type="java.lang.String">
+       <option item="Option1">Option 1</option>
+       <option item="Option2">Option 2</option>
+       <option item="Option3">Option 3</option>
+      </vaadin-combo-box>
+      <vaadin-combo-box caption="Aantal Personen" data-item-type="java.lang.String">
+       <option item="Option1">Option 1</option>
+       <option item="Option2">Option 2</option>
+       <option item="Option3">Option 3</option>
+      </vaadin-combo-box>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout caption="Voorbereiding" size-auto>
+      <vaadin-check-box caption="Hefkraan nodig?"></vaadin-check-box>
+      <vaadin-check-box caption="Klein heftoestel nodig?"></vaadin-check-box>
+      <vaadin-check-box caption="Alle onderdelen binnen?"></vaadin-check-box>
+     </vaadin-vertical-layout>
+     <vaadin-text-area caption="Opmerkingen voor technieker" width-full :expand></vaadin-text-area>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width-full margin>
+     <vaadin-check-box caption="Interventie ingepland?" :bottom></vaadin-check-box>
+     <vaadin-check-box caption="Afgewerkt en gefactureerd?" :bottom></vaadin-check-box>
+     <vaadin-check-box caption="Gefactureerd?" :bottom></vaadin-check-box>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
+  </vaadin-panel>
+ </body>
+</html>

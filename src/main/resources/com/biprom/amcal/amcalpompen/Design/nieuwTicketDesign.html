@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout size-full>
+   <vaadin-horizontal-layout width-full>
+    <vaadin-vertical-layout size-auto>
+     <vaadin-combo-box caption="Soort werk" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+    </vaadin-vertical-layout>
+    <vaadin-vertical-layout size-auto>
+     <vaadin-check-box caption="Aanmaak offerte"></vaadin-check-box>
+     <vaadin-check-box caption="Inplanning"></vaadin-check-box>
+    </vaadin-vertical-layout>
+    <vaadin-combo-box caption="Prioriteit ticket" data-item-type="java.lang.String">
+     <option item="Option1">Option 1</option>
+     <option item="Option2">Option 2</option>
+     <option item="Option3">Option 3</option>
+    </vaadin-combo-box>
+    <vaadin-combo-box caption="Klant" data-item-type="java.lang.String">
+     <option item="Option1">Option 1</option>
+     <option item="Option2">Option 2</option>
+     <option item="Option3">Option 3</option>
+    </vaadin-combo-box>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout size-full margin :expand>
+    <vaadin-vertical-layout size-auto>
+     <vaadin-text-field caption="Ticketnummer" :center></vaadin-text-field>
+     <vaadin-button style-name="friendly" plain-text :center>
+       Sla ticket op 
+     </vaadin-button>
+    </vaadin-vertical-layout>
+    <vaadin-upload caption="Upload bestanden"></vaadin-upload>
+    <vaadin-text-area caption="Commentaar Ticket" width-full :expand></vaadin-text-area>
+   </vaadin-horizontal-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>
