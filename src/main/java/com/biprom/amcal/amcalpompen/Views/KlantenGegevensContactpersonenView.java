@@ -20,7 +20,15 @@ public class KlantenGegevensContactpersonenView extends KlantenGegevensContactpe
 
     public static final String VIEW_NAME = "KlantenGegevensContactPersonen";
 
-    Personen persoon = new Personen();
+    Personen persoon1 = new Personen();
+    Personen persoon2 = new Personen();
+    Personen persoon3 = new Personen();
+    Personen persoon4 = new Personen();
+    Personen persoon5 = new Personen();
+    Personen persoon6 = new Personen();
+    Personen persoon7 = new Personen();
+    Personen persoon8 = new Personen();
+
     List<Personen> personenLijst = new ArrayList<>();
 
     public KlantenGegevensContactpersonenView() {
@@ -35,69 +43,69 @@ public class KlantenGegevensContactpersonenView extends KlantenGegevensContactpe
 
         personenLijst.clear();
 
-        persoon.setEmailAdres(tfContactEmail1.getValue());
-        persoon.setGsmNummer(tfContactGSM1.getValue());
-        persoon.setNaam(tfContactNaam1.getValue());
-        persoon.setTelefoonNummer(tfContactTel1.getValue());
-        persoon.setVoorNaam(tfContactNaam1.getValue());
+        persoon1.setEmailAdres(tfContactEmail1.getValue());
+        persoon1.setGsmNummer(tfContactGSM1.getValue());
+        persoon1.setNaam(tfContactNaam1.getValue());
+        persoon1.setTelefoonNummer(tfContactTel1.getValue());
+        persoon1.setVoorNaam(tfContactVoornaam1.getValue());
 
-        personenLijst.add(persoon);
+        personenLijst.add(persoon1);
 
-         persoon.setEmailAdres(tfContactEmail2.getValue());
-         persoon.setGsmNummer(tfContactGSM2.getValue());
-         persoon.setNaam(tfContactNaam2.getValue());
-         persoon.setTelefoonNummer(tfContactTel2.getValue());
-         persoon.setVoorNaam(tfContactNaam2.getValue());
+         persoon2.setEmailAdres(tfContactEmail2.getValue());
+         persoon2.setGsmNummer(tfContactGSM2.getValue());
+         persoon2.setNaam(tfContactNaam2.getValue());
+         persoon2.setTelefoonNummer(tfContactTel2.getValue());
+         persoon2.setVoorNaam(tfContactVoornaam1.getValue());
 
-         personenLijst.add(persoon);
+         personenLijst.add(persoon2);
 
-         persoon.setEmailAdres(tfContactEmail3.getValue());
-         persoon.setGsmNummer(tfContactGSM3.getValue());
-         persoon.setNaam(tfContactNaam3.getValue());
-         persoon.setTelefoonNummer(tfContactTel3.getValue());
-         persoon.setVoorNaam(tfContactNaam3.getValue());
+         persoon3.setEmailAdres(tfContactEmail3.getValue());
+         persoon3.setGsmNummer(tfContactGSM3.getValue());
+         persoon3.setNaam(tfContactNaam3.getValue());
+         persoon3.setTelefoonNummer(tfContactTel3.getValue());
+         persoon3.setVoorNaam(tfContactVoornaam1.getValue());
 
-         personenLijst.add(persoon);
+         personenLijst.add(persoon3);
 
-         persoon.setEmailAdres(tfContactEmail4.getValue());
-         persoon.setGsmNummer(tfContactGSM4.getValue());
-         persoon.setNaam(tfContactNaam4.getValue());
-         persoon.setTelefoonNummer(tfContactTel4.getValue());
-         persoon.setVoorNaam(tfContactNaam4.getValue());
+         persoon4.setEmailAdres(tfContactEmail4.getValue());
+         persoon4.setGsmNummer(tfContactGSM4.getValue());
+         persoon4.setNaam(tfContactNaam4.getValue());
+         persoon4.setTelefoonNummer(tfContactTel4.getValue());
+         persoon4.setVoorNaam(tfContactVoornaam1.getValue());
 
-         personenLijst.add(persoon);
+         personenLijst.add(persoon4);
 
-         persoon.setEmailAdres(tfContactEmail5.getValue());
-         persoon.setGsmNummer(tfContactGSM5.getValue());
-         persoon.setNaam(tfContactNaam5.getValue());
-         persoon.setTelefoonNummer(tfContactTel5.getValue());
-         persoon.setVoorNaam(tfContactNaam5.getValue());
+         persoon5.setEmailAdres(tfContactEmail5.getValue());
+         persoon5.setGsmNummer(tfContactGSM5.getValue());
+         persoon5.setNaam(tfContactNaam5.getValue());
+         persoon5.setTelefoonNummer(tfContactTel5.getValue());
+         persoon5.setVoorNaam(tfContactVoornaam1.getValue());
 
-         personenLijst.add(persoon);
+         personenLijst.add(persoon5);
 
-         persoon.setEmailAdres(tfContactEmail6.getValue());
-         persoon.setGsmNummer(tfContactGSM6.getValue());
-         persoon.setNaam(tfContactNaam6.getValue());
-         persoon.setTelefoonNummer(tfContactTel6.getValue());
-         persoon.setVoorNaam(tfContactNaam6.getValue());
+         persoon6.setEmailAdres(tfContactEmail6.getValue());
+         persoon6.setGsmNummer(tfContactGSM6.getValue());
+         persoon6.setNaam(tfContactNaam6.getValue());
+         persoon6.setTelefoonNummer(tfContactTel6.getValue());
+         persoon6.setVoorNaam(tfContactVoornaam1.getValue());
 
-         personenLijst.add(persoon);
+         personenLijst.add(persoon6);
 
-         persoon.setEmailAdres(tfContactEmail7.getValue());
-         persoon.setGsmNummer(tfContactGSM7.getValue());
-         persoon.setNaam(tfContactNaam7.getValue());
-         persoon.setTelefoonNummer(tfContactTel7.getValue());
-         persoon.setVoorNaam(tfContactNaam7.getValue());
+         persoon7.setEmailAdres(tfContactEmail7.getValue());
+         persoon7.setGsmNummer(tfContactGSM7.getValue());
+         persoon7.setNaam(tfContactNaam7.getValue());
+         persoon7.setTelefoonNummer(tfContactTel7.getValue());
+         persoon7.setVoorNaam(tfContactVoornaam1.getValue());
 
-         personenLijst.add(persoon);
+         personenLijst.add(persoon7);
 
-         persoon.setEmailAdres(tfContactEmail8.getValue());
-         persoon.setGsmNummer(tfContactGSM8.getValue());
-         persoon.setNaam(tfContactNaam8.getValue());
-         persoon.setTelefoonNummer(tfContactTel8.getValue());
-         persoon.setVoorNaam(tfContactNaam8.getValue());
+         persoon8.setEmailAdres(tfContactEmail8.getValue());
+         persoon8.setGsmNummer(tfContactGSM8.getValue());
+         persoon8.setNaam(tfContactNaam8.getValue());
+         persoon8.setTelefoonNummer(tfContactTel8.getValue());
+         persoon8.setVoorNaam(tfContactVoornaam1.getValue());
 
-         personenLijst.add(persoon);
+         personenLijst.add(persoon8);
 
         return personenLijst;
     }

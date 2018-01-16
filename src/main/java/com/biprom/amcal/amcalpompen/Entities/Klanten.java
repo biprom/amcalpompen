@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Klanten {
 
+
     @Id
     public String Id;
 
@@ -77,4 +78,6 @@ public class Klanten {
                 ", facturatieAdres=" + facturatieAdres +
                 '}';
     }
+
+
 }

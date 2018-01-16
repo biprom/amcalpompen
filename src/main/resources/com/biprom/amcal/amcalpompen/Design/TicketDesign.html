@@ -8,29 +8,12 @@
  <body>
   <vaadin-panel size-full>
    <vaadin-vertical-layout size-full>
-    <vaadin-panel style-name="scroll-divider">
-     <vaadin-horizontal-layout width-full>
-      <vaadin-combo-box caption="Soort Werk" data-item-type="java.lang.String">
-       <option item="Option1">Option 1</option>
-       <option item="Option2">Option 2</option>
-       <option item="Option3">Option 3</option>
-      </vaadin-combo-box>
-      <vaadin-vertical-layout caption="Soort Ticket" size-auto>
-       <vaadin-check-box caption="Aanmaak Offerte"></vaadin-check-box>
-       <vaadin-check-box caption="Inplanning"></vaadin-check-box>
-      </vaadin-vertical-layout>
-      <vaadin-combo-box caption="Prioriteit ticket" data-item-type="java.lang.String">
-       <option item="Option1">Option 1</option>
-       <option item="Option2">Option 2</option>
-       <option item="Option3">Option 3</option>
-      </vaadin-combo-box>
-      <vaadin-combo-box caption="Klant" data-item-type="java.lang.String">
-       <option item="Option1">Option 1</option>
-       <option item="Option2">Option 2</option>
-       <option item="Option3">Option 3</option>
-      </vaadin-combo-box>
-     </vaadin-horizontal-layout>
-    </vaadin-panel>
+    <vaadin-button style-name="primary" width-full plain-text>
+      Voeg nieuw detail bij ticket 
+    </vaadin-button>
+    <vaadin-button style-name="danger" width-full plain-text>
+      Verwijder nieuw detail van Ticket 
+    </vaadin-button>
     <vaadin-tab-sheet size-full _id="ticketTabSheet" :expand></vaadin-tab-sheet>
    </vaadin-vertical-layout>
   </vaadin-panel>

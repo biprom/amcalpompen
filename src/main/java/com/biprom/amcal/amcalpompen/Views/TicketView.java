@@ -16,29 +16,21 @@ public class TicketView extends TicketDesign implements View {
 
     public static final String VIEW_NAME = "UitwerkingTicket";
 
-    public TicketLeveringSubView leveringSubView;
-    public InterventieView interventieSubView;
-    public TechniekerInterventieView techniekerInterventieView;
-    public TicketHerstellingSubView ticketHerstellingSubView;
-    public TechniekerHerstellingView techniekerHerstellingView;
+
+    public NieuwTicketView nieuwTicketView;
+    public DetailGegevensTicketView detailGegevensTicketView;
 
 
     @Autowired
-    public TicketView(TicketLeveringSubView leveringSubView, InterventieView interventieSubView, TechniekerInterventieView techniekerInterventieView, TicketHerstellingSubView ticketHerstellingSubView, TechniekerHerstellingView techniekerHerstellingView) {
-        this.leveringSubView = leveringSubView;
-        this.interventieSubView = interventieSubView;
-        this.techniekerInterventieView = techniekerInterventieView;
-        this.ticketHerstellingSubView = ticketHerstellingSubView;
-        this.techniekerHerstellingView = techniekerHerstellingView;
+    public TicketView(NieuwTicketView nieuwTicketView, DetailGegevensTicketView detailGegevensTicketView) {
+        this.nieuwTicketView = nieuwTicketView;
+        this.detailGegevensTicketView = detailGegevensTicketView;
     }
 
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        ticketTabSheet.addTab( leveringSubView, "LEVERING");
-        ticketTabSheet.addTab( interventieSubView, "INTERVENTIE");
-        ticketTabSheet.addTab( techniekerInterventieView, "INTERVENTIE (TECHNIEKER)");
-        ticketTabSheet.addTab( ticketHerstellingSubView, "HERSTELLING ATELIER");
-        ticketTabSheet.addTab( techniekerHerstellingView, "HERSTELLING ATELIER (TECHNIEKER)");
+        ticketTabSheet.addTab( nieuwTicketView, "BASISGEGEVENS TICKET");
+        ticketTabSheet.addTab( detailGegevensTicketView, "DETAILGEGEVENS TICKET");
     }
 }

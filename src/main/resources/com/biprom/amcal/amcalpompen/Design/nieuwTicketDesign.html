@@ -9,36 +9,77 @@
   <vaadin-vertical-layout size-full>
    <vaadin-horizontal-layout width-full>
     <vaadin-vertical-layout size-auto>
-     <vaadin-combo-box caption="Soort werk" data-item-type="java.lang.String">
+     <vaadin-combo-box caption="Opdrachtgever" data-item-type="com.biprom.amcal.amcalpompen.Entities.Klanten" _id="cbOpdrachtgever"></vaadin-combo-box>
+     <vaadin-combo-box caption="Contactpersoon" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Telefoonnummer" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Referentie opdrachtgever" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="facturatie adres" data-item-type="java.lang.String">
       <option item="Option1">Option 1</option>
       <option item="Option2">Option 2</option>
       <option item="Option3">Option 3</option>
      </vaadin-combo-box>
     </vaadin-vertical-layout>
     <vaadin-vertical-layout size-auto>
-     <vaadin-check-box caption="Aanmaak offerte"></vaadin-check-box>
-     <vaadin-check-box caption="Inplanning"></vaadin-check-box>
+     <vaadin-combo-box caption="Eindklant" data-item-type="java.lang.String" _id="cbEindklant">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Contactpersoon" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Telefoonnummer" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Referentie eindklant" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="lever adres" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
     </vaadin-vertical-layout>
-    <vaadin-combo-box caption="Prioriteit ticket" data-item-type="java.lang.String">
-     <option item="Option1">Option 1</option>
-     <option item="Option2">Option 2</option>
-     <option item="Option3">Option 3</option>
-    </vaadin-combo-box>
-    <vaadin-combo-box caption="Klant" data-item-type="java.lang.String">
-     <option item="Option1">Option 1</option>
-     <option item="Option2">Option 2</option>
-     <option item="Option3">Option 3</option>
-    </vaadin-combo-box>
+    <vaadin-vertical-layout size-auto>
+     <vaadin-combo-box caption="Prioriteit ticket" data-item-type="java.lang.String">
+      <option item="Option1">Option 1</option>
+      <option item="Option2">Option 2</option>
+      <option item="Option3">Option 3</option>
+     </vaadin-combo-box>
+     <vaadin-check-box caption="Interventie"></vaadin-check-box>
+     <vaadin-check-box caption="Herstelling/Bestek/Uitvoer"></vaadin-check-box>
+     <vaadin-check-box caption="Offerte"></vaadin-check-box>
+     <vaadin-check-box caption="Offerte goedgekeurd?"></vaadin-check-box>
+    </vaadin-vertical-layout>
    </vaadin-horizontal-layout>
    <vaadin-horizontal-layout size-full margin :expand>
-    <vaadin-vertical-layout size-auto>
-     <vaadin-text-field caption="Ticketnummer" :center></vaadin-text-field>
-     <vaadin-button style-name="friendly" plain-text :center>
-       Sla ticket op 
-     </vaadin-button>
-    </vaadin-vertical-layout>
-    <vaadin-upload caption="Upload bestanden"></vaadin-upload>
-    <vaadin-text-area caption="Commentaar Ticket" width-full :expand></vaadin-text-area>
+    <vaadin-text-area caption="Probleemomschrijving / vraag klant" width-full :expand></vaadin-text-area>
+    <vaadin-text-area caption="Interne opmerkingen" width-full :expand></vaadin-text-area>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout size-full :expand>
+    <vaadin-inline-date-field caption="Aanvraagdatum Ticket" description="Aanvraagdatum Ticket"></vaadin-inline-date-field>
+    <vaadin-text-field caption="Ticketnummer" :center></vaadin-text-field>
+    <vaadin-button icon="fonticon://Vaadin-Icons/e620" style-name="friendly" plain-text>
+      Sla ticket op 
+    </vaadin-button>
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
  </body>

@@ -1,8 +1,6 @@
 package com.biprom.amcal.amcalpompen.Views;
 
-import com.biprom.amcal.amcalpompen.Design.LogInDesign;
 import com.biprom.amcal.amcalpompen.Design.MainDesign;
-import com.biprom.amcal.amcalpompen.Design.TicketLeveringSubDesign;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;

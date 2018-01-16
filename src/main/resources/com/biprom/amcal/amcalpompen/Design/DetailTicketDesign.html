@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout size-full>
+   <vaadin-panel size-full :expand>
+    <vaadin-vertical-layout size-auto>
+     <vaadin-horizontal-layout caption="Installatie">
+      <vaadin-vertical-layout size-auto>
+       <vaadin-combo-box caption="Artikelnummer installatie" data-item-type="java.lang.String">
+        <option item="Option1">Option 1</option>
+        <option item="Option2">Option 2</option>
+        <option item="Option3">Option 3</option>
+       </vaadin-combo-box>
+       <vaadin-text-area caption="Omschrijving installatie"></vaadin-text-area>
+      </vaadin-vertical-layout>
+      <vaadin-vertical-layout size-auto>
+       <vaadin-inline-date-field caption="Productiedatum Installatie"></vaadin-inline-date-field>
+      </vaadin-vertical-layout>
+      <vaadin-vertical-layout size-auto>
+       <vaadin-upload caption="Upload foto's"></vaadin-upload>
+      </vaadin-vertical-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout caption="Pomptype">
+      <vaadin-vertical-layout size-auto>
+       <vaadin-combo-box caption="Artikelnummer pomp" data-item-type="java.lang.String">
+        <option item="Option1">Option 1</option>
+        <option item="Option2">Option 2</option>
+        <option item="Option3">Option 3</option>
+       </vaadin-combo-box>
+       <vaadin-text-area caption="Omschrijving pomp"></vaadin-text-area>
+      </vaadin-vertical-layout>
+      <vaadin-vertical-layout size-auto>
+       <vaadin-inline-date-field caption="Productiedatum pomp"></vaadin-inline-date-field>
+      </vaadin-vertical-layout>
+      <vaadin-vertical-layout size-auto>
+       <vaadin-upload caption="Upload foto's"></vaadin-upload>
+      </vaadin-vertical-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout width-full>
+      <vaadin-grid description="Benodigde en/of gebruikt onderdelen" width-full>
+       <table>
+        <colgroup>
+         <col column-id="project" sortable="false">
+         <col column-id="status" sortable="false">
+        </colgroup>
+        <thead>
+         <tr default>
+          <th plain-text column-ids="project">Omschrijving artikel</th>
+          <th plain-text column-ids="status">Artikel gebruikt</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr item="project1">
+          <td>Customer Project 1</td>
+          <td>OK</td>
+         </tr>
+         <tr item="project2">
+          <td>Customer Project 2</td>
+          <td>OK</td>
+         </tr>
+         <tr item="project3">
+          <td>Customer Project 3</td>
+          <td>OK</td>
+         </tr>
+         <tr item="project4">
+          <td>Customer Project 4</td>
+          <td>OK</td>
+         </tr>
+         <tr item="project5">
+          <td>Customer Project 5</td>
+          <td>OK</td>
+         </tr>
+         <tr item="project6">
+          <td>Customer Project 6</td>
+          <td>OK</td>
+         </tr>
+         <tr item="project7">
+          <td>Customer Project 7</td>
+          <td>OK</td>
+         </tr>
+         <tr item="project8">
+          <td>Customer Project 8</td>
+          <td>OK</td>
+         </tr>
+         <tr item="project9">
+          <td>Customer Project 9</td>
+          <td>OK</td>
+         </tr>
+        </tbody>
+       </table>
+      </vaadin-grid>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout width-full>
+      <vaadin-text-area caption="Vaststelling Technieker" width-full></vaadin-text-area>
+      <vaadin-text-area caption="Interne opmerkingen" width-full></vaadin-text-area>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout width-full>
+      <vaadin-vertical-layout>
+       <vaadin-grid caption="Werkuren" description="Benodigde en/of gebruikt onderdelen" width-full>
+        <table>
+         <colgroup>
+          <col column-id="project" sortable="false">
+          <col column-id="status" sortable="false">
+         </colgroup>
+         <thead>
+          <tr default>
+           <th plain-text column-ids="project">datum</th>
+           <th plain-text column-ids="status">van...</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr item="project1">
+           <td>Customer Project 1</td>
+           <td>OK</td>
+          </tr>
+          <tr item="project2">
+           <td>Customer Project 2</td>
+           <td>OK</td>
+          </tr>
+          <tr item="project3">
+           <td>Customer Project 3</td>
+           <td>OK</td>
+          </tr>
+          <tr item="project4">
+           <td>Customer Project 4</td>
+           <td>OK</td>
+          </tr>
+          <tr item="project5">
+           <td>Customer Project 5</td>
+           <td>OK</td>
+          </tr>
+          <tr item="project6">
+           <td>Customer Project 6</td>
+           <td>OK</td>
+          </tr>
+          <tr item="project7">
+           <td>Customer Project 7</td>
+           <td>OK</td>
+          </tr>
+          <tr item="project8">
+           <td>Customer Project 8</td>
+           <td>OK</td>
+          </tr>
+          <tr item="project9">
+           <td>Customer Project 9</td>
+           <td>OK</td>
+          </tr>
+         </tbody>
+        </table>
+       </vaadin-grid>
+       <vaadin-horizontal-layout width-full>
+        <vaadin-label caption="Aantal geraamde werkuren" width-full plain-text>
+          Vb, 30 uur 
+        </vaadin-label>
+        <vaadin-vertical-layout caption="Tussentijdse factuur mogelijk" size-auto>
+         <vaadin-check-box caption="Opdracht afgewerkt?"></vaadin-check-box>
+         <vaadin-check-box caption="Tussentijdse facturatie mogelijk?"></vaadin-check-box>
+        </vaadin-vertical-layout>
+       </vaadin-horizontal-layout>
+      </vaadin-vertical-layout>
+     </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
+   </vaadin-panel>
+  </vaadin-vertical-layout>
+ </body>
+</html>

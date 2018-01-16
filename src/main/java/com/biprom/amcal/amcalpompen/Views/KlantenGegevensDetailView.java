@@ -22,7 +22,10 @@ public class KlantenGegevensDetailView extends KlantenGegevevensDetailDesign imp
     public static final String VIEW_NAME = "KlantenGegevensDetail";
 
     List<Adres>leverAdressen = new ArrayList<Adres>();
-    Adres adr = new Adres();
+    Adres adr1 = new Adres();
+    Adres adr2 = new Adres();
+    Adres adr3 = new Adres();
+    Adres adr4 = new Adres();
 
     public KlantenGegevensDetailView() {
 
@@ -35,46 +38,49 @@ public class KlantenGegevensDetailView extends KlantenGegevevensDetailDesign imp
 
     public List<Adres>returnDiliveryAdresses(){
 
+            //test lijntje commentaar
 
-            adr.setStraat(tfLeverStraat1.getValue());
-            adr.setStad(tfLeverStad1.getValue().toString());
-            adr.setPostcode(tfLeverPostcode1.getValue().toString());
-            adr.setNummer(tfLeverNummer1.getValue().toString());
-            adr.setCommentaar(tfLeverCommentaar1.getValue().toString());
-            adr.setBus(tfLeverBus1.getValue().toString());
-            adr.setLand(tfLeverLand1.getValue().toString());
+            adr1.setStraat(tfLeverStraat1.getValue());
+            adr1.setStad(tfLeverStad1.getValue());
+            adr1.setPostcode(tfLeverPostcode1.getValue());
+            adr1.setNummer(tfLeverNummer1.getValue());
+            adr1.setCommentaar(tfLeverCommentaar1.getValue());
+            adr1.setBus(tfLeverBus1.getValue());
+            adr1.setLand(tfLeverLand1.getValue());
 
-            leverAdressen.add(0, adr);
 
-            adr.setStraat(tfLeverStraat2.getValue());
-            adr.setStad(tfLeverStad2.getValue());
-            adr.setPostcode(tfLeverPostcode2.getValue());
-            adr.setNummer(tfLeverNummer2.getValue());
-            adr.setCommentaar(tfLeverCommentaar2.getValue());
-            adr.setBus(tfLeverBus2.getValue());
-            adr.setLand(tfLeverLand2.getValue());
 
-            leverAdressen.add(1, adr);
+            leverAdressen.add(0, adr1);
 
-            adr.setStraat(tfLeverStraat3.getValue());
-            adr.setStad(tfLeverStad3.getValue());
-            adr.setPostcode(tfLeverPostcode3.getValue());
-            adr.setNummer(tfLeverNummer3.getValue());
-            adr.setCommentaar(tfLeverCommentaar3.getValue());
-            adr.setBus(tfLeverBus3.getValue());
-            adr.setLand(tfLeverLand3.getValue());
+            adr2.setStraat(tfLeverStraat2.getValue());
+            adr2.setStad(tfLeverStad2.getValue());
+            adr2.setPostcode(tfLeverPostcode2.getValue());
+            adr2.setNummer(tfLeverNummer2.getValue());
+            adr2.setCommentaar(tfLeverCommentaar2.getValue());
+            adr2.setBus(tfLeverBus2.getValue());
+            adr2.setLand(tfLeverLand2.getValue());
 
-            leverAdressen.add(2, adr);
+            leverAdressen.add(1, adr2);
 
-            adr.setStraat(tfLeverStraat4.getValue());
-            adr.setStad(tfLeverStad4.getValue());
-            adr.setPostcode(tfLeverPostcode4.getValue());
-            adr.setNummer(tfLeverNummer4.getValue());
-            adr.setCommentaar(tfLeverCommentaar4.getValue());
-            adr.setBus(tfLeverBus4.getValue());
-            adr.setLand(tfLeverLand4.getValue());
+            adr3.setStraat(tfLeverStraat3.getValue());
+            adr3.setStad(tfLeverStad3.getValue());
+            adr3.setPostcode(tfLeverPostcode3.getValue());
+            adr3.setNummer(tfLeverNummer3.getValue());
+            adr3.setCommentaar(tfLeverCommentaar3.getValue());
+            adr3.setBus(tfLeverBus3.getValue());
+            adr3.setLand(tfLeverLand3.getValue());
 
-            leverAdressen.add(3, adr);
+            leverAdressen.add(2, adr3);
+
+            adr4.setStraat(tfLeverStraat4.getValue());
+            adr4.setStad(tfLeverStad4.getValue());
+            adr4.setPostcode(tfLeverPostcode4.getValue());
+            adr4.setNummer(tfLeverNummer4.getValue());
+            adr4.setCommentaar(tfLeverCommentaar4.getValue());
+            adr4.setBus(tfLeverBus4.getValue());
+            adr4.setLand(tfLeverLand4.getValue());
+
+            leverAdressen.add(3, adr4);
 
             System.out.println("adressenlijst die moet worden doorgegeven is = " + leverAdressen.toString());
 
