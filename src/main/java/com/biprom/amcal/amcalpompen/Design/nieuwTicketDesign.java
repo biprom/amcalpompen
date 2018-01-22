@@ -19,6 +19,7 @@ import com.vaadin.ui.ComboBox;
 @SuppressWarnings("serial")
 public class nieuwTicketDesign extends VerticalLayout {
     protected ComboBox<com.biprom.amcal.amcalpompen.Entities.Klanten> cbOpdrachtgever;
+    protected ComboBox<com.biprom.amcal.amcalpompen.Entities.Personen> cbContactPersoon;
     protected ComboBox<String> cbEindklant;
 
     public nieuwTicketDesign() {
