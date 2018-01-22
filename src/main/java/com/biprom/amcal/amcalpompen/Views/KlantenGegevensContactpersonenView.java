@@ -55,7 +55,7 @@ public class KlantenGegevensContactpersonenView extends KlantenGegevensContactpe
          persoon2.setGsmNummer(tfContactGSM2.getValue());
          persoon2.setNaam(tfContactNaam2.getValue());
          persoon2.setTelefoonNummer(tfContactTel2.getValue());
-         persoon2.setVoorNaam(tfContactVoornaam1.getValue());
+         persoon2.setVoorNaam(tfContactVoornaam2.getValue());
 
          personenLijst.add(persoon2);
 
@@ -63,7 +63,7 @@ public class KlantenGegevensContactpersonenView extends KlantenGegevensContactpe
          persoon3.setGsmNummer(tfContactGSM3.getValue());
          persoon3.setNaam(tfContactNaam3.getValue());
          persoon3.setTelefoonNummer(tfContactTel3.getValue());
-         persoon3.setVoorNaam(tfContactVoornaam1.getValue());
+         persoon3.setVoorNaam(tfContactVoornaam3.getValue());
 
          personenLijst.add(persoon3);
 
@@ -71,7 +71,7 @@ public class KlantenGegevensContactpersonenView extends KlantenGegevensContactpe
          persoon4.setGsmNummer(tfContactGSM4.getValue());
          persoon4.setNaam(tfContactNaam4.getValue());
          persoon4.setTelefoonNummer(tfContactTel4.getValue());
-         persoon4.setVoorNaam(tfContactVoornaam1.getValue());
+         persoon4.setVoorNaam(tfContactVoornaam4.getValue());
 
          personenLijst.add(persoon4);
 
@@ -79,7 +79,7 @@ public class KlantenGegevensContactpersonenView extends KlantenGegevensContactpe
          persoon5.setGsmNummer(tfContactGSM5.getValue());
          persoon5.setNaam(tfContactNaam5.getValue());
          persoon5.setTelefoonNummer(tfContactTel5.getValue());
-         persoon5.setVoorNaam(tfContactVoornaam1.getValue());
+         persoon5.setVoorNaam(tfContactVoornaam5.getValue());
 
          personenLijst.add(persoon5);
 
@@ -87,7 +87,7 @@ public class KlantenGegevensContactpersonenView extends KlantenGegevensContactpe
          persoon6.setGsmNummer(tfContactGSM6.getValue());
          persoon6.setNaam(tfContactNaam6.getValue());
          persoon6.setTelefoonNummer(tfContactTel6.getValue());
-         persoon6.setVoorNaam(tfContactVoornaam1.getValue());
+         persoon6.setVoorNaam(tfContactVoornaam6.getValue());
 
          personenLijst.add(persoon6);
 
@@ -95,7 +95,7 @@ public class KlantenGegevensContactpersonenView extends KlantenGegevensContactpe
          persoon7.setGsmNummer(tfContactGSM7.getValue());
          persoon7.setNaam(tfContactNaam7.getValue());
          persoon7.setTelefoonNummer(tfContactTel7.getValue());
-         persoon7.setVoorNaam(tfContactVoornaam1.getValue());
+         persoon7.setVoorNaam(tfContactVoornaam7.getValue());
 
          personenLijst.add(persoon7);
 
@@ -103,7 +103,7 @@ public class KlantenGegevensContactpersonenView extends KlantenGegevensContactpe
          persoon8.setGsmNummer(tfContactGSM8.getValue());
          persoon8.setNaam(tfContactNaam8.getValue());
          persoon8.setTelefoonNummer(tfContactTel8.getValue());
-         persoon8.setVoorNaam(tfContactVoornaam1.getValue());
+         persoon8.setVoorNaam(tfContactVoornaam8.getValue());
 
          personenLijst.add(persoon8);
 

@@ -47,19 +47,6 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
         cbOpdrachtgever.addValueChangeListener(comboEvent ->  fillAanvragerCombobox(cbOpdrachtgever.getValue()));
 
 
-
-
-       //Iterator<Personen> personenIterator = personenArrayList.iterator();
-
-       //while(personenIterator.hasNext()){
-       //    cbContactPersoon.setItems(personenArrayList);
-       //}
-       //cbContactPersoon.setItemCaptionGenerator(p -> p.getVoorNaam());
-
-        //cbContactPersoon.setItems(customerRepository.findBybedrijfsNaam("Biprom"));
-        //cbContactPersoon.setItemCaptionGenerator( p  -> p.getAanvragers().toString());
-
-
     }
 
     public void fillAanvragerCombobox(Klanten geselecteerdeKlant)
