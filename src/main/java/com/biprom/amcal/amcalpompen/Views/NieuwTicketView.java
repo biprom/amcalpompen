@@ -146,8 +146,11 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
         //cbEindklant.setValue(mainTicket.getEindKlant());
         //checkbUitvoering.setValue(mainTicket.get);
         Notification.show("Interne Opmerkingen zijn : " + mainTicket.getInterneOpmerkingen());
-        checkbInterventie.setResponsive(true);
+        //checkbInterventie.setResponsive(true);
+
         checkbInterventie.setValue(true);
+        tfInterneOmperkingen.setValue("brambie is a sexy motherfucker!!!");
+        getUI().push();
         //checkbofferte.getValue());
         //checkbOfferteGoedgekeurd.getValue());
         //cbOpdrachtgever.setValue(mainTicket.getOpdrachtgever());
