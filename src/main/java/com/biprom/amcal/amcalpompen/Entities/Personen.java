@@ -25,7 +25,7 @@ public class Personen {
         this.gsmNummer = gsmNummer;
     }
 
-    public String getNaam() {
+    public  String getNaam() {
         return naam;
     }
 
