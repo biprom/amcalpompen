@@ -1,11 +1,17 @@
 package com.biprom.amcal.amcalpompen.Entities;
 
+import com.vaadin.spring.annotation.SpringComponent;
+import com.vaadin.spring.annotation.UIScope;
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+
+@SpringComponent("sharedTicket")
+@UIScope
 
 public class MainTicket {
 

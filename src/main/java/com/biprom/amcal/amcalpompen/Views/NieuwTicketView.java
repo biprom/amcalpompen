@@ -26,8 +26,10 @@ import java.util.*;
 import static com.biprom.amcal.amcalpompen.Views.NieuwTicketView.VIEW_NAME;
 
 @SpringComponent
-@SpringView(name = VIEW_NAME)
 @UIScope
+@SpringView(name = VIEW_NAME)
+
+
 public class NieuwTicketView extends nieuwTicketDesign implements View {
 
     public static final String VIEW_NAME = "nieuwTicket";
@@ -140,25 +142,24 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
     public void fillItemsFromSearch(MainTicket mainTicket){
 
 
-        //dpDatumTicket.setValue(mainTicket.getAanvraagDatumTicket());
-        //cbEindklantContactPersoon.setValue(mainTicket.getContactPersoonEindklant());
-        //cbContactPersoon.setValue(mainTicket.getContactPersoonKlant());
-        //cbEindklant.setValue(mainTicket.getEindKlant());
+        dpDatumTicket.setValue(mainTicket.getAanvraagDatumTicket());
+        cbEindklantContactPersoon.setValue(mainTicket.getContactPersoonEindklant());
+        cbContactPersoon.setValue(mainTicket.getContactPersoonKlant());
+        cbEindklant.setValue(mainTicket.getEindKlant());
         //checkbUitvoering.setValue(mainTicket.get);
-        Notification.show("Interne Opmerkingen zijn : " + mainTicket.getInterneOpmerkingen());
-        //checkbInterventie.setResponsive(true);
+       // checkbInterventie.setResponsive(mainTicket.get);
+        tfInterneOmperkingen.setValue(mainTicket.getInterneOpmerkingen());
 
-        checkbInterventie.setValue(true);
-        tfInterneOmperkingen.setValue("brambie is a sexy motherfucker!!!");
-        getUI().push();
         //checkbofferte.getValue());
         //checkbOfferteGoedgekeurd.getValue());
-        //cbOpdrachtgever.setValue(mainTicket.getOpdrachtgever());
-        //cbPrioriteitTicket.setValue(mainTicket.getPrioriteitTicket());
-        //tfEindklantReferentie.setValue(mainTicket.getReferentieEindklant());
-        //tfReferentieOpdrachtgever.setValue(mainTicket.getReferentieOpdrachtgever());
+        cbOpdrachtgever.setValue(mainTicket.getOpdrachtgever());
+        cbPrioriteitTicket.setValue(mainTicket.getPrioriteitTicket());
+        tfEindklantReferentie.setValue(mainTicket.getReferentieEindklant());
+        tfReferentieOpdrachtgever.setValue(mainTicket.getReferentieOpdrachtgever());
         //tfProbleemOmschrijving.setValue(mainTicket.get);
-        //tfTicketnummer.setValue(mainTicket.getTicketNummer());
+        tfTicketnummer.setValue(mainTicket.getTicketNummer());
+        cbFacturatieAdres.setValue( mainTicket.getOpdrachtgever().getFacturatieAdres() );
+        //cbEindklantLeverAdres.setValue( mainTicket.get );
     }
 
 

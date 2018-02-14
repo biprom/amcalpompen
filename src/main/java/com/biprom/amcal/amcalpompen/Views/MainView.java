@@ -15,8 +15,9 @@ import static com.biprom.amcal.amcalpompen.Views.MainView.VIEW_NAME;
 
 
 @SpringComponent
-@SpringView(name = VIEW_NAME)
 @UIScope
+@SpringView(name = VIEW_NAME)
+
 public class MainView extends MainDesign implements View {
 
     @Autowired

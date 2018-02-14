@@ -1,6 +1,7 @@
 package com.biprom.amcal.amcalpompen;
 
 
+import com.biprom.amcal.amcalpompen.Entities.MainTicket;
 import com.biprom.amcal.amcalpompen.Views.MainView;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -14,11 +15,11 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringUI
 @ComponentScan("com.biprom.amcal.amcalpompen")
+
 public class MainUI extends UI {
 
     @Autowired
     SpringViewProvider viewProvider;
-
 
 
     @Override
@@ -28,5 +29,8 @@ public class MainUI extends UI {
         navigator.addProvider(viewProvider);
         navigator.navigateTo(MainView.VIEW_NAME);
 
+
+
     }
 }
+

@@ -4,6 +4,7 @@ import com.biprom.amcal.amcalpompen.Design.KlantenGegevevensDetailDesign;
 import com.biprom.amcal.amcalpompen.Entities.Adres;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
@@ -14,9 +15,10 @@ import java.util.List;
 import static com.biprom.amcal.amcalpompen.Views.KlantenGegevensDetailView.VIEW_NAME;
 
 
-@Component
-@SpringView(name = VIEW_NAME)
+@SpringComponent
 @UIScope
+@SpringView(name = VIEW_NAME)
+
 public class KlantenGegevensDetailView extends KlantenGegevevensDetailDesign implements View {
 
     public static final String VIEW_NAME = "KlantenGegevensDetail";

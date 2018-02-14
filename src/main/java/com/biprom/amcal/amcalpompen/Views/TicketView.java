@@ -5,7 +5,9 @@ import com.biprom.amcal.amcalpompen.Entities.DetailTicket;
 import com.biprom.amcal.amcalpompen.Entities.MainTicket;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.spring.annotation.UIScope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +16,11 @@ import java.util.List;
 import static com.biprom.amcal.amcalpompen.Views.TicketView.VIEW_NAME;
 
 
-@Component
+@SpringComponent
+@UIScope
 @SpringView(name = VIEW_NAME)
+
+
 public class TicketView extends TicketDesign implements View {
 
     public static final String VIEW_NAME = "UitwerkingTicket";

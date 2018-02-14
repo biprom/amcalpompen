@@ -5,6 +5,7 @@ import com.biprom.amcal.amcalpompen.Entities.Klanten;
 import com.biprom.amcal.amcalpompen.repositories.CustomerRepository;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,10 @@ import org.springframework.stereotype.Component;
 
 import static com.biprom.amcal.amcalpompen.Views.IngevenGegevensView.VIEW_NAME;
 
-@Component
-@SpringView(name = VIEW_NAME)
+@SpringComponent
 @UIScope
+@SpringView(name = VIEW_NAME)
+
 public class IngevenGegevensView extends IngevenGegevensDesign implements View {
 
     public static final String VIEW_NAME = "ingevenGegevens";
