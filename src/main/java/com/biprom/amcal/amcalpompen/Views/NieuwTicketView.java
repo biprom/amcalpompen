@@ -13,6 +13,7 @@ import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
+import sun.applet.Main;
 
 
 import java.time.LocalDate;
@@ -33,6 +34,7 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
     CustomerRepository customerRepository;
     MainTicketRepository mainTicketRepository;
+    MainTicket nieuwTicket = new MainTicket();
 
     @Autowired
     public NieuwTicketView(CustomerRepository customerRepository, MainTicketRepository mainTicketRepository) {
@@ -66,7 +68,7 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
 
     private void saveTicket() {
-        MainTicket nieuwTicket = new MainTicket();
+
         nieuwTicket.setIngegevenLeverAdres( cbEindklantLeverAdres.getValue() );
         nieuwTicket.setAanvraagDatumTicket(dpDatumTicket.getValue());
         nieuwTicket.setContactPersoonEindklant(cbEindklantContactPersoon.getValue());
@@ -89,8 +91,6 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
         //TODO
         //autogenerate AM- number
-
-
 
         mainTicketRepository.save(nieuwTicket);
     }
@@ -142,7 +142,6 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
     public void fillMainTicketItemsFromSearch(MainTicket mainTicket){
 
-
         //fill all fields for MainTicket
         dpDatumTicket.setValue(mainTicket.getAanvraagDatumTicket());
         cbEindklantContactPersoon.setValue(mainTicket.getContactPersoonEindklant());
@@ -170,9 +169,11 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
         }
 
+        public MainTicket getReceivedMainTicket() {
+            return nieuwTicket;
+        }
 
-
-
-
-
+        public void setReceivedMainTicket(MainTicket receivedMainTicket) {
+            this.nieuwTicket = receivedMainTicket;
+        }
 }

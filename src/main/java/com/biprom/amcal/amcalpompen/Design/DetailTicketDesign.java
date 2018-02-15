@@ -5,7 +5,6 @@ import com.vaadin.annotations.DesignRoot;
 import com.vaadin.ui.declarative.Design;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.Upload;
 import com.vaadin.ui.Grid;
@@ -26,14 +25,14 @@ import com.vaadin.ui.Button;
 @SuppressWarnings("serial")
 public class DetailTicketDesign extends VerticalLayout {
     protected TextField tfArtikelNummer;
-    protected ComboBox<String> cbJaarInstallatie;
-    protected ComboBox<String> cbWeekInstallatie;
+    protected TextField tfJaarInstallatie;
+    protected TextField tfWeekInstallatie;
     protected InlineDateField datefAanmaakDatum;
     protected TextArea taOmschrijvingInstallatie;
     protected Upload uplFotoInstallatie;
     protected TextField tfArtikelNummerPomp;
-    protected ComboBox<String> cbJaarPomp;
-    protected ComboBox<String> cbWeekPomp;
+    protected TextField tfJaarPomp;
+    protected TextField tfWeekPomp;
     protected TextArea taOmschrijvingPomp;
     protected Upload ulFotoPomp;
     protected Grid<com.biprom.amcal.amcalpompen.Entities.Product> tbBenodigdMateriaal;

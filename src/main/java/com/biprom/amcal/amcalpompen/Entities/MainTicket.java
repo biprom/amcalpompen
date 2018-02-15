@@ -200,8 +200,8 @@ public class MainTicket {
         return details;
     }
 
-    public void setDetails(ArrayList<DetailTicket> details) {
-        this.details = details;
+    public void setDetail(DetailTicket detail) {
+        details.add( detail );
     }
 
     public String getContactPersoonKlantNaam(){
