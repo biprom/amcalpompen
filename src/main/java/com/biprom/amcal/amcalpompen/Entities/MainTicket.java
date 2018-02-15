@@ -10,8 +10,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
-@SpringComponent("sharedTicket")
-@UIScope
+@SpringComponent
+
 
 public class MainTicket {
 
@@ -26,9 +26,13 @@ public class MainTicket {
     private Personen contactPersoonEindklant;
     private String referentieEindklant;
 
+    private Adres ingegevenLeverAdres;
+
     private int prioriteitTicket;
     private boolean interventie;
-    private boolean herstellingBestekUitvoer;
+    private boolean herstellingBestek;
+    private boolean herstellingGoedgekeurd;
+    private boolean herstellingUitvoer;
     private boolean offerte;
     private boolean offerteGoedgekeurd;
 
@@ -41,6 +45,8 @@ public class MainTicket {
     private String ticketNummer;
 
     private ArrayList<DetailTicket> details = new ArrayList<DetailTicket>();
+
+
 
     public MainTicket() {
     }
@@ -117,12 +123,29 @@ public class MainTicket {
         this.interventie = interventie;
     }
 
-    public boolean isHerstellingBestekUitvoer() {
-        return herstellingBestekUitvoer;
+
+    public boolean isHerstellingGoedgekeurd() {
+        return herstellingGoedgekeurd;
     }
 
-    public void setHerstellingBestekUitvoer(boolean herstellingBestekUitvoer) {
-        this.herstellingBestekUitvoer = herstellingBestekUitvoer;
+    public void setHerstellingGoedgekeurd(boolean herstellingGoedgekeurd) {
+        this.herstellingGoedgekeurd = herstellingGoedgekeurd;
+    }
+
+    public boolean isHerstellingUitvoer() {
+        return herstellingUitvoer;
+    }
+
+    public void setHerstellingUitvoer(boolean herstellingUitvoer) {
+        this.herstellingUitvoer = herstellingUitvoer;
+    }
+
+    public boolean isHerstellingBestek() {
+        return herstellingBestek;
+    }
+
+    public void setHerstellingBestek(boolean herstellingBestek) {
+        this.herstellingBestek = herstellingBestek;
     }
 
     public boolean isOfferte() {
@@ -187,5 +210,13 @@ public class MainTicket {
 
     public String getContactPersoonEindklantNaam(){
         return contactPersoonEindklant.getVoorNaam()+ " " + contactPersoonEindklant.getNaam();
+    }
+
+    public Adres getIngegevenLeverAdres() {
+        return ingegevenLeverAdres;
+    }
+
+    public void setIngegevenLeverAdres(Adres ingegevenLeverAdres) {
+        this.ingegevenLeverAdres = ingegevenLeverAdres;
     }
 }

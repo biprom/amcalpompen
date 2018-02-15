@@ -26,7 +26,9 @@
      <vaadin-vertical-layout size-auto>
       <vaadin-combo-box caption="Prioriteit ticket" data-item-type="java.lang.Integer" _id="cbPrioriteitTicket"></vaadin-combo-box>
       <vaadin-check-box caption="Interventie" responsive _id="checkbInterventie"></vaadin-check-box>
-      <vaadin-check-box caption="Herstelling/Bestek/Uitvoer" _id="checkbUitvoering"></vaadin-check-box>
+      <vaadin-check-box caption="Herstelling : bestek" _id="checkbBestek"></vaadin-check-box>
+      <vaadin-check-box caption="Bestek goedgekeurd?" _id="checkbBestekGoedgekeurd"></vaadin-check-box>
+      <vaadin-check-box caption="Herstelling : uitvoer" _id="checkbUitvoering"></vaadin-check-box>
       <vaadin-check-box caption="Offerte" _id="checkbofferte"></vaadin-check-box>
       <vaadin-check-box caption="Offerte goedgekeurd?" _id="checkbOfferteGoedgekeurd"></vaadin-check-box>
      </vaadin-vertical-layout>
@@ -38,10 +40,10 @@
     <vaadin-horizontal-layout spacing="false" width-full :expand>
      <vaadin-inline-date-field caption="Aanvraagdatum Ticket" description="Aanvraagdatum Ticket" _id="dpDatumTicket"></vaadin-inline-date-field>
      <vaadin-text-field caption="Ticketnummer" _id="tfTicketnummer" :center></vaadin-text-field>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e620" style-name="friendly" plain-text _id="bSlaTicketOp">
-       Sla ticket op 
-     </vaadin-button>
     </vaadin-horizontal-layout>
+    <vaadin-button icon="fonticon://Vaadin-Icons/e620" style-name="friendly" width-full plain-text _id="bSlaTicketOp">
+      Sla ticket op 
+    </vaadin-button>
    </vaadin-vertical-layout>
   </vaadin-panel>
  </body>

@@ -35,6 +35,8 @@ public class nieuwTicketDesign extends Panel {
     protected ComboBox<com.biprom.amcal.amcalpompen.Entities.Adres> cbEindklantLeverAdres;
     protected ComboBox<Integer> cbPrioriteitTicket;
     protected CheckBox checkbInterventie;
+    protected CheckBox checkbBestek;
+    protected CheckBox checkbBestekGoedgekeurd;
     protected CheckBox checkbUitvoering;
     protected CheckBox checkbofferte;
     protected CheckBox checkbOfferteGoedgekeurd;

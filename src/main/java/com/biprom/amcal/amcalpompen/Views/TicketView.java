@@ -11,6 +11,7 @@ import com.vaadin.spring.annotation.UIScope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Iterator;
 import java.util.List;
 
 import static com.biprom.amcal.amcalpompen.Views.TicketView.VIEW_NAME;
@@ -35,6 +36,8 @@ public class TicketView extends TicketDesign implements View {
         this.nieuwTicketView = nieuwTicketView;
         this.detailGegevensTicketView = detailGegevensTicketView;
 
+        bNieuwDetail.addClickListener( e ->  ticketTabSheet.addTab( detailGegevensTicketView, "DETAIL - " ));
+
 
     }
 
@@ -42,10 +45,28 @@ public class TicketView extends TicketDesign implements View {
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         ticketTabSheet.addTab( nieuwTicketView, "BASISGEGEVENS TICKET");
-        ticketTabSheet.addTab( detailGegevensTicketView, "DETAILGEGEVENS TICKET");
+
     }
 
-    public void setTicketItems(MainTicket mainTicket){
-        nieuwTicketView.fillItemsFromSearch(mainTicket);
+    public void setMainTicketItems(MainTicket mainTicket){
+        nieuwTicketView.fillMainTicketItemsFromSearch(mainTicket);
+
+        Iterator<DetailTicket>detailTicketIterator = mainTicket.getDetails().iterator();
+        while (detailTicketIterator.hasNext()){
+            fillDetailTicket(detailTicketIterator.next());
+
+        }
+
+
     }
+
+    private void fillDetailTicket(DetailTicket detailTicket) {
+        //ticketTabSheet.addTab( detailGegevensTicketView, "DETAIL - " );
+    }
+
+    //fill all fields for detailTicket
+
+
+
+
 }

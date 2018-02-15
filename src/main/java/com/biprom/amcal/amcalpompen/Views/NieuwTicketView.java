@@ -1,10 +1,7 @@
 package com.biprom.amcal.amcalpompen.Views;
 
 import com.biprom.amcal.amcalpompen.Design.nieuwTicketDesign;
-import com.biprom.amcal.amcalpompen.Entities.Adres;
-import com.biprom.amcal.amcalpompen.Entities.Klanten;
-import com.biprom.amcal.amcalpompen.Entities.MainTicket;
-import com.biprom.amcal.amcalpompen.Entities.Personen;
+import com.biprom.amcal.amcalpompen.Entities.*;
 import com.biprom.amcal.amcalpompen.repositories.CustomerRepository;
 import com.biprom.amcal.amcalpompen.repositories.MainTicketRepository;
 import com.vaadin.data.HasValue;
@@ -70,21 +67,25 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
     private void saveTicket() {
         MainTicket nieuwTicket = new MainTicket();
+        nieuwTicket.setIngegevenLeverAdres( cbEindklantLeverAdres.getValue() );
         nieuwTicket.setAanvraagDatumTicket(dpDatumTicket.getValue());
         nieuwTicket.setContactPersoonEindklant(cbEindklantContactPersoon.getValue());
         nieuwTicket.setContactPersoonKlant(cbContactPersoon.getValue());
         nieuwTicket.setEindKlant(cbEindklant.getValue());
-        nieuwTicket.setHerstellingBestekUitvoer(checkbUitvoering.getValue());
         nieuwTicket.setInterneOpmerkingen(tfInterneOmperkingen.getValue());
-        nieuwTicket.setInterventie(checkbInterventie.getValue());
-        nieuwTicket.setOfferte(checkbofferte.getValue());
-        nieuwTicket.setOfferteGoedgekeurd(checkbOfferteGoedgekeurd.getValue());
         nieuwTicket.setOpdrachtgever(cbOpdrachtgever.getValue());
         nieuwTicket.setPrioriteitTicket(cbPrioriteitTicket.getValue());
         nieuwTicket.setReferentieEindklant(tfEindklantReferentie.getValue());
         nieuwTicket.setReferentieOpdrachtgever(tfReferentieOpdrachtgever.getValue());
         nieuwTicket.setVraagKlant(tfProbleemOmschrijving.getValue());
         nieuwTicket.setTicketNummer(tfTicketnummer.getValue());
+
+        nieuwTicket.setInterventie(checkbInterventie.getValue());
+        nieuwTicket.setHerstellingBestek( checkbBestek.getValue() );
+        nieuwTicket.setHerstellingGoedgekeurd(checkbBestekGoedgekeurd.getValue());
+        nieuwTicket.setHerstellingUitvoer(checkbUitvoering.getValue());
+        nieuwTicket.setOfferte(checkbofferte.getValue());
+        nieuwTicket.setOfferteGoedgekeurd(checkbOfferteGoedgekeurd.getValue());
 
         //TODO
         //autogenerate AM- number
@@ -139,28 +140,38 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
     }
 
-    public void fillItemsFromSearch(MainTicket mainTicket){
+    public void fillMainTicketItemsFromSearch(MainTicket mainTicket){
 
 
+        //fill all fields for MainTicket
         dpDatumTicket.setValue(mainTicket.getAanvraagDatumTicket());
         cbEindklantContactPersoon.setValue(mainTicket.getContactPersoonEindklant());
         cbContactPersoon.setValue(mainTicket.getContactPersoonKlant());
         cbEindklant.setValue(mainTicket.getEindKlant());
-        //checkbUitvoering.setValue(mainTicket.get);
-       // checkbInterventie.setResponsive(mainTicket.get);
+
         tfInterneOmperkingen.setValue(mainTicket.getInterneOpmerkingen());
 
-        //checkbofferte.getValue());
-        //checkbOfferteGoedgekeurd.getValue());
         cbOpdrachtgever.setValue(mainTicket.getOpdrachtgever());
         cbPrioriteitTicket.setValue(mainTicket.getPrioriteitTicket());
         tfEindklantReferentie.setValue(mainTicket.getReferentieEindklant());
         tfReferentieOpdrachtgever.setValue(mainTicket.getReferentieOpdrachtgever());
-        //tfProbleemOmschrijving.setValue(mainTicket.get);
+        tfProbleemOmschrijving.setValue(mainTicket.getVraagKlant());
         tfTicketnummer.setValue(mainTicket.getTicketNummer());
         cbFacturatieAdres.setValue( mainTicket.getOpdrachtgever().getFacturatieAdres() );
-        //cbEindklantLeverAdres.setValue( mainTicket.get );
-    }
+        cbEindklantLeverAdres.setValue( mainTicket.getIngegevenLeverAdres() );
+
+        checkbInterventie.setValue( mainTicket.isInterventie() );
+        checkbBestek.setValue( mainTicket.isHerstellingBestek() );
+        checkbBestekGoedgekeurd.setValue( mainTicket.isHerstellingGoedgekeurd() );
+        checkbUitvoering.setValue( mainTicket.isHerstellingUitvoer() );
+        checkbofferte.setValue(mainTicket.isOfferte());
+        checkbOfferteGoedgekeurd.setValue(mainTicket.isOfferteGoedgekeurd());
+
+
+        }
+
+
+
 
 
 

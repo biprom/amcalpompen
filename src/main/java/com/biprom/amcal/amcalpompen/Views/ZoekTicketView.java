@@ -57,7 +57,7 @@ public class ZoekTicketView extends ZoekTicketDesign implements View {
         tblTickets.addSelectionListener(selectionEvent -> {
 
 
-                                        ticketView.setTicketItems(selectionEvent.getFirstSelectedItem().get());
+                                        ticketView.setMainTicketItems(selectionEvent.getFirstSelectedItem().get());
                                         subNavigator.navigateTo(TicketView.VIEW_NAME);
         });
 
