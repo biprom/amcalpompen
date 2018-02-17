@@ -8,6 +8,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
+import com.vaadin.ui.TabSheet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,19 +29,22 @@ public class TicketView extends TicketDesign implements View {
 
 
     public NieuwTicketView nieuwTicketView;
-    public DetailGegevensTicketView detailGegevensTicketView;
 
 
     @Autowired
-    public TicketView(NieuwTicketView nieuwTicketView, DetailGegevensTicketView detailGegevensTicketView) {
+    public TicketView(NieuwTicketView nieuwTicketView) {
         this.nieuwTicketView = nieuwTicketView;
-        this.detailGegevensTicketView = detailGegevensTicketView;
+
 
         ticketTabSheet.addTab( nieuwTicketView, "BASISGEGEVENS TICKET");
-        bNieuwDetail.addClickListener( e ->  {
-            ticketTabSheet.addTab(  detailGegevensTicketView, "DETAIL - " + Math.random());
 
+        bNieuwDetail.addClickListener( e ->  {
+            ticketTabSheet.addTab(  new DetailGegevensTicketView(), "DETAIL - " + Math.random());
         });
+
+        bVerwijderDetail.addClickListener( e -> {
+            ticketTabSheet.removeComponent( ticketTabSheet.getSelectedTab() );
+        } );
 
 
     }

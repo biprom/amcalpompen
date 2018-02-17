@@ -14,20 +14,16 @@ import org.springframework.stereotype.Component;
 
 import static com.biprom.amcal.amcalpompen.Views.DetailGegevensTicketView.VIEW_NAME;
 
-@SpringComponent
-@UIScope
-@SpringView(name = VIEW_NAME)
 
 public class DetailGegevensTicketView extends DetailTicketDesign implements View {
 
     public static final String VIEW_NAME = "ticketDetail";
 
-    public NieuwTicketView nieuwTicketView;
 
-    @Autowired
-    public DetailGegevensTicketView(NieuwTicketView nieuwTicketView) {
 
-        this.nieuwTicketView = nieuwTicketView;
+    public DetailGegevensTicketView() {
+
+
         DetailTicket detailTicket = new DetailTicket();
 
         buttonSaveDetailTicket.addClickListener( e -> {
@@ -60,7 +56,7 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
         detailTicket.setTussentijdseFacturatieMogelijk( checkbDeeltelijksFacturatie.getValue() );
         detailTicket.setVerderInTePlannen( checkbVerderInTePlannen.getValue() );
 
-        nieuwTicketView.setDetailTicket( detailTicket );
+        //nieuwTicketView.setDetailTicket( detailTicket );
 
 
     }
