@@ -5,9 +5,11 @@ import com.biprom.amcal.amcalpompen.Entities.DetailTicket;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringComponent;
+import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import static com.biprom.amcal.amcalpompen.Views.DetailGegevensTicketView.VIEW_NAME;
@@ -27,6 +29,13 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
         this.nieuwTicketView = nieuwTicketView;
         DetailTicket detailTicket = new DetailTicket();
+
+        buttonSaveDetailTicket.addClickListener( e -> {
+
+            saveDetailTicket( detailTicket );
+        });
+
+
     }
 
 
@@ -51,8 +60,8 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
         detailTicket.setTussentijdseFacturatieMogelijk( checkbDeeltelijksFacturatie.getValue() );
         detailTicket.setVerderInTePlannen( checkbVerderInTePlannen.getValue() );
 
+        nieuwTicketView.setDetailTicket( detailTicket );
 
 
-        buttonSaveDetailTicket.addClickListener( e ->  nieuwTicketView.getReceivedMainTicket().setDetail( detailTicket ));
     }
 }

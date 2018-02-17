@@ -169,11 +169,8 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
         }
 
-        public MainTicket getReceivedMainTicket() {
-            return nieuwTicket;
-        }
-
-        public void setReceivedMainTicket(MainTicket receivedMainTicket) {
-            this.nieuwTicket = receivedMainTicket;
+        public void setDetailTicket(DetailTicket receivedDetailTicket) {
+            nieuwTicket.setDetail( receivedDetailTicket );
+            System.out.printf(""+ nieuwTicket.getDetails().toString());
         }
 }

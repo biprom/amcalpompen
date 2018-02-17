@@ -36,17 +36,16 @@ public class TicketView extends TicketDesign implements View {
         this.nieuwTicketView = nieuwTicketView;
         this.detailGegevensTicketView = detailGegevensTicketView;
 
-        bNieuwDetail.addClickListener( e ->  ticketTabSheet.addTab( detailGegevensTicketView, "DETAIL - " ));
-
-
-    }
-
-
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
         ticketTabSheet.addTab( nieuwTicketView, "BASISGEGEVENS TICKET");
+        bNieuwDetail.addClickListener( e ->  {
+            ticketTabSheet.addTab(  detailGegevensTicketView, "DETAIL - " + Math.random());
+
+        });
+
 
     }
+
+
 
     public void setMainTicketItems(MainTicket mainTicket){
         nieuwTicketView.fillMainTicketItemsFromSearch(mainTicket);
