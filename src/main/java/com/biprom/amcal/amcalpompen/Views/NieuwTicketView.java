@@ -34,32 +34,63 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
     CustomerRepository customerRepository;
     MainTicketRepository mainTicketRepository;
+
+    List<Klanten>klantenLijst;
+
     MainTicket nieuwTicket = new MainTicket();
 
     @Autowired
     public NieuwTicketView(CustomerRepository customerRepository, MainTicketRepository mainTicketRepository) {
+
         this.customerRepository = customerRepository;
         this.mainTicketRepository = mainTicketRepository;
 
-        List<Klanten>klantenLijst = customerRepository.findAll();
+        cbOpdrachtgever.setEmptySelectionAllowed( true );
+
+        cbEindklant.setEmptySelectionAllowed( true );
+
+        cbEindklantContactPersoon.setEmptySelectionAllowed( true );
+
+        cbContactPersoon.setEmptySelectionAllowed( true );
+
+        klantenLijst = customerRepository.findAll();
         cbOpdrachtgever.setItems(klantenLijst);
         cbOpdrachtgever.setItemCaptionGenerator( p  -> p.getBedrijfsNaam());
 
         cbEindklant.setItems(klantenLijst);
         cbEindklant.setItemCaptionGenerator(p -> p.getBedrijfsNaam());
 
-        cbOpdrachtgever.addValueChangeListener(comboEvent ->  fillAanvragerCombobox(cbOpdrachtgever.getValue()));
-        cbOpdrachtgever.addValueChangeListener(comboEvent -> fillAanvragerFacturatieAdresComboBox(cbOpdrachtgever.getValue()));
+        cbOpdrachtgever.addValueChangeListener(comboEvent ->  {
+            if(cbOpdrachtgever.getValue() != null) {
+                fillAanvragerCombobox( cbOpdrachtgever.getValue() );
+                fillAanvragerFacturatieAdresComboBox( cbOpdrachtgever.getValue() );
+            }
+            else {
+                cbContactPersoon.setSelectedItem( null );
+                cbFacturatieAdres.setSelectedItem( null );
+            }
+        });
 
-        cbEindklant.addValueChangeListener(comboEvent ->  fillEindklantCombobox(cbEindklant.getValue()));
-        cbEindklant.addValueChangeListener(comboEvent -> fillEindklantFacturatieAdresComboBox(cbEindklant.getValue()));
+
+        cbEindklant.addValueChangeListener(comboEvent ->  {
+            if(cbEindklant.getValue() != null) {
+                fillEindklantCombobox( cbEindklant.getValue() );
+                fillEindklantFacturatieAdresComboBox( cbEindklant.getValue() );
+            }
+            else {
+                cbEindklantContactPersoon.setSelectedItem( null );
+                cbEindklantLeverAdres.setSelectedItem( null );
+            }
+        });
+
 
         cbPrioriteitTicket.setItems(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        tfTicketnummer.setValue( LocalDateTime.now().toString() );
 
         dpDatumTicket.setValue(LocalDate.now());
 
         bSlaTicketOp.addClickListener(e -> saveTicket());
-
 
     }
 
@@ -67,7 +98,7 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
 
 
-    private void saveTicket() {
+    public void saveTicket() {
 
         nieuwTicket.setIngegevenLeverAdres( cbEindklantLeverAdres.getValue() );
         nieuwTicket.setAanvraagDatumTicket(dpDatumTicket.getValue());
@@ -99,12 +130,19 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
         List<Personen>personen = geselecteerdeKlant.getAanvragers();
         cbEindklantContactPersoon.setItems(personen);
         cbEindklantContactPersoon.setItemCaptionGenerator(p -> p.getVoorNaam() + " " + p.getNaam());
-        cbEindklantContactPersoon.addValueChangeListener(comboEvent -> fillEindklantTelefoonTextField(cbEindklantContactPersoon.getValue()));
+        cbEindklantContactPersoon.addValueChangeListener(comboEvent -> {
+            if(cbEindklantContactPersoon == null) {
+                tfEindklantGsmNummer.setValue("");
+            }
+            else fillEindklantTelefoonTextField( cbEindklantContactPersoon.getValue() );
+        });
     }
 
     private void fillEindklantTelefoonTextField(Personen geselecteerdePersoon) {
-        tfEindklantGsmNummer.setValue(geselecteerdePersoon.getGsmNummer());
-
+        if(geselecteerdePersoon != null) {
+            tfEindklantGsmNummer.setValue( geselecteerdePersoon.getGsmNummer() );
+        }
+        else tfEindklantGsmNummer.setValue( "" );
 
     }
 
@@ -128,9 +166,11 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
     }
 
     private void fillAanvragerTelefoonTextField(Personen geselecteerdePersoon) {
-        tfGsmNummer.setValue(geselecteerdePersoon.getGsmNummer());
 
-
+        if(geselecteerdePersoon != null) {
+            tfGsmNummer.setValue( geselecteerdePersoon.getGsmNummer() );
+        }
+            else tfGsmNummer.setValue( "" );
     }
 
     private void fillAanvragerFacturatieAdresComboBox(Klanten geselecteerdeKlant) {
@@ -172,5 +212,32 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
         public void setDetailTicket(DetailTicket receivedDetailTicket) {
             nieuwTicket.setDetail( receivedDetailTicket );
             System.out.printf(""+ nieuwTicket.getDetails().toString());
+        }
+
+        public void clearDataFromTicketView(){
+
+            //fill all fields for MainTicket
+            dpDatumTicket.setValue(LocalDate.now());
+
+
+            cbOpdrachtgever.setSelectedItem( null );
+            cbEindklant.setSelectedItem( null );
+
+            tfInterneOmperkingen.setValue("");
+            cbPrioriteitTicket.setValue(1);
+            tfEindklantReferentie.setValue("");
+            tfReferentieOpdrachtgever.setValue("");
+            tfProbleemOmschrijving.setValue("");
+            tfTicketnummer.setValue("");
+       ;
+
+            checkbInterventie.setValue( false );
+            checkbBestek.setValue( false );
+            checkbBestekGoedgekeurd.setValue( false );
+            checkbUitvoering.setValue( false );
+            checkbofferte.setValue(false);
+            checkbOfferteGoedgekeurd.setValue(false);
+
+
         }
 }

@@ -22,20 +22,33 @@ public class MainView extends MainDesign implements View {
 
     @Autowired
     SpringViewProvider viewProvider;
+    NieuwTicketView nieuwTicketView;
 
     public static final String VIEW_NAME = "mainview";
+
+    @Autowired
+    public MainView(NieuwTicketView nieuwTicketView) {
+        this.nieuwTicketView = nieuwTicketView;
+
+
+    }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
 
-         Navigator subNavigator = new Navigator(UI.getCurrent(), subPanel);
-         subNavigator.addProvider(viewProvider);
-         subNavigator.navigateTo(ZoekTicketView.VIEW_NAME);
+        Navigator subNavigator = new Navigator(UI.getCurrent(), subPanel);
+        subNavigator.addProvider(viewProvider);
+        subNavigator.navigateTo(ZoekTicketView.VIEW_NAME);
 
-         zoekButton.addClickListener(clickEvent -> subNavigator.navigateTo(ZoekTicketView.VIEW_NAME));
-         nieuwButton.addClickListener(clickEvent -> subNavigator.navigateTo(NieuwTicketView.VIEW_NAME));
-         uitwerkingButton.addClickListener(clickEvent -> subNavigator.navigateTo(TicketView.VIEW_NAME));
-         invoegButton.addClickListener(clickEvent -> subNavigator.navigateTo(IngevenGegevensView.VIEW_NAME));
+        zoekButton.addClickListener(clickEvent -> subNavigator.navigateTo(ZoekTicketView.VIEW_NAME));
+        uitwerkingButton.addClickListener(clickEvent -> subNavigator.navigateTo(TicketView.VIEW_NAME));
+        invoegButton.addClickListener(clickEvent -> subNavigator.navigateTo(IngevenGegevensView.VIEW_NAME));
+        nieuwButton.addClickListener(clickEvent -> {
+            nieuwTicketView.clearDataFromTicketView();
+            subNavigator.navigateTo(NieuwTicketView.VIEW_NAME);
+
+        });
+
 
 
     }

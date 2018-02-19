@@ -29,12 +29,21 @@ public class TicketView extends TicketDesign implements View {
 
 
     public NieuwTicketView nieuwTicketView;
+    public DetailGegevensTicketView detailGegevensTicketView;
 
 
     @Autowired
     public TicketView(NieuwTicketView nieuwTicketView) {
         this.nieuwTicketView = nieuwTicketView;
 
+
+
+
+    }
+
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
 
         ticketTabSheet.addTab( nieuwTicketView, "BASISGEGEVENS TICKET");
 
@@ -46,19 +55,23 @@ public class TicketView extends TicketDesign implements View {
             ticketTabSheet.removeComponent( ticketTabSheet.getSelectedTab() );
         } );
 
+        bBewaarDeetail.addClickListener( e -> {
+            detailGegevensTicketView = (DetailGegevensTicketView) ticketTabSheet.getSelectedTab();
+            nieuwTicketView.setDetailTicket( detailGegevensTicketView.saveDetailTicket() );
+            nieuwTicketView.saveTicket();
+        });
+
 
     }
-
-
 
     public void setMainTicketItems(MainTicket mainTicket){
         nieuwTicketView.fillMainTicketItemsFromSearch(mainTicket);
 
-        Iterator<DetailTicket>detailTicketIterator = mainTicket.getDetails().iterator();
-        while (detailTicketIterator.hasNext()){
-            fillDetailTicket(detailTicketIterator.next());
+       // Iterator<DetailTicket>detailTicketIterator = mainTicket.getDetails().iterator();
+       // while (detailTicketIterator.hasNext()){
+       //     fillDetailTicket(detailTicketIterator.next());
 
-        }
+        //}
 
 
     }

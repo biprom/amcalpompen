@@ -21,6 +21,7 @@ import com.vaadin.ui.Button;
 public class TicketDesign extends Panel {
     protected Button bNieuwDetail;
     protected Button bVerwijderDetail;
+    protected Button bBewaarDeetail;
     protected TabSheet ticketTabSheet;
 
     public TicketDesign() {

@@ -20,22 +20,12 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
     public static final String VIEW_NAME = "ticketDetail";
 
 
-
-    public DetailGegevensTicketView() {
-
-
-        DetailTicket detailTicket = new DetailTicket();
-
-        buttonSaveDetailTicket.addClickListener( e -> {
-
-            saveDetailTicket( detailTicket );
-        });
+    DetailTicket detailTicket = new DetailTicket();
 
 
-    }
 
+    public DetailTicket saveDetailTicket(){
 
-    public void saveDetailTicket(DetailTicket detailTicket){
 
         detailTicket.setArtikelNummerInstallatie( tfArtikelNummer.getValue() );
         detailTicket.setInstallatieJaar( Integer.parseInt( tfJaarInstallatie.getValue() ) );
@@ -56,7 +46,7 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
         detailTicket.setTussentijdseFacturatieMogelijk( checkbDeeltelijksFacturatie.getValue() );
         detailTicket.setVerderInTePlannen( checkbVerderInTePlannen.getValue() );
 
-        //nieuwTicketView.setDetailTicket( detailTicket );
+        return detailTicket;
 
 
     }
