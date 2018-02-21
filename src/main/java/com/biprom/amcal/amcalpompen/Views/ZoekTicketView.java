@@ -39,7 +39,6 @@ public class ZoekTicketView extends ZoekTicketDesign implements View {
 
         tblTickets.setItems(mainTicketRepository.findAll());
 
-
         tblTickets.addColumn(MainTicket::getTicketNummer).setCaption("Ticket nummer");
         tblTickets.addColumn(MainTicket::getContactPersoonKlantNaam).setCaption("Opdrachtgever");
         tblTickets.addColumn(MainTicket::getContactPersoonEindklantNaam).setCaption("Eindklant");

@@ -1,12 +1,17 @@
 package com.biprom.amcal.amcalpompen.Entities;
 
+import com.vaadin.spring.annotation.SpringComponent;
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 import sun.security.krb5.internal.Ticket;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+
+
+@SpringComponent
 
 public class DetailTicket {
 
@@ -17,8 +22,9 @@ public class DetailTicket {
     private Integer installatieJaar;
     private Integer installatieWeek;
     private String omschrijvingInstallatie;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDate detailAanmaakDatum;
+    private LocalDateTime detailAanmaakDatum;
 
 
     private String artikelNummerPomp;
@@ -175,11 +181,11 @@ public class DetailTicket {
         this.verderInTePlannen = verderInTePlannen;
     }
 
-    public LocalDate getDetailAanmaakDatum() {
+    public LocalDateTime getDetailAanmaakDatum() {
         return detailAanmaakDatum;
     }
 
-    public void setDetailAanmaakDatum(LocalDate detailAanmaakDatum) {
+    public void setDetailAanmaakDatum(LocalDateTime detailAanmaakDatum) {
         this.detailAanmaakDatum = detailAanmaakDatum;
     }
 }

@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 import static com.biprom.amcal.amcalpompen.Views.DetailGegevensTicketView.VIEW_NAME;
 
 
@@ -22,7 +24,9 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
     DetailTicket detailTicket = new DetailTicket();
 
-
+    public DetailGegevensTicketView() {
+        datefAanmaakDatum.setValue( LocalDateTime.now() );
+    }
 
     public DetailTicket saveDetailTicket(){
 
@@ -47,6 +51,30 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
         detailTicket.setVerderInTePlannen( checkbVerderInTePlannen.getValue() );
 
         return detailTicket;
+
+
+    }
+
+    public void setDetailTicketViewWithData(DetailTicket detailTicket){
+
+        tfArtikelNummer.setValue(detailTicket.getArtikelNummerInstallatie()) ;
+        tfJaarInstallatie.setValue(detailTicket.getInstallatieJaar().toString()) ;
+        tfWeekInstallatie.setValue(detailTicket.getInstallatieWeek().toString());
+        datefAanmaakDatum.setValue(detailTicket.getDetailAanmaakDatum()) ;
+        taOmschrijvingInstallatie.setValue(detailTicket.getOmschrijvingInstallatie()) ;
+
+        tfArtikelNummerPomp.setValue(detailTicket.getArtikelNummerPomp()) ;
+        tfJaarPomp.setValue(detailTicket.getJaarPomp().toString() );
+        tfWeekPomp.setValue(detailTicket.getWeekPomp().toString()) ;
+        taOmschrijvingPomp.setValue(detailTicket.getOmschrijvingPomp()) ;
+
+        taVaststellingTechnieker.setValue(detailTicket.getVaststellingTechnieker()) ;
+        taInterneOpmerkingen.setValue(detailTicket.getInterneOpmerkingen()) ;
+        tfRamingUren.setValue("" + detailTicket.getRamingUren());
+
+        checkbOpdrachtAfgewerkt.setValue(detailTicket.isOpdrachtAfgewerkt()) ;
+        checkbDeeltelijksFacturatie.setValue(detailTicket.isTussentijdseFacturatieMogelijk()) ;
+        checkbVerderInTePlannen.setValue(detailTicket.isVerderInTePlannen()) ;
 
 
     }

@@ -4,6 +4,7 @@ import com.biprom.amcal.amcalpompen.Design.nieuwTicketDesign;
 import com.biprom.amcal.amcalpompen.Entities.*;
 import com.biprom.amcal.amcalpompen.repositories.CustomerRepository;
 import com.biprom.amcal.amcalpompen.repositories.MainTicketRepository;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.vaadin.data.HasValue;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -37,7 +38,7 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
     List<Klanten>klantenLijst;
 
-    MainTicket nieuwTicket = new MainTicket();
+    MainTicket nieuwTicket;
 
     @Autowired
     public NieuwTicketView(CustomerRepository customerRepository, MainTicketRepository mainTicketRepository) {
@@ -88,9 +89,16 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
         tfTicketnummer.setValue( LocalDateTime.now().toString() );
 
-        dpDatumTicket.setValue(LocalDate.now());
+        dpDatumTicket.setValue(LocalDateTime.now());
 
-        bSlaTicketOp.addClickListener(e -> saveTicket());
+        bSlaTicketOp.addClickListener(e -> {
+            if(nieuwTicket == null) {
+                saveNewTicket();
+            }
+            else {
+                saveSameTicket();
+            }
+        });
 
     }
 
@@ -98,7 +106,9 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
 
 
-    public void saveTicket() {
+    public void saveNewTicket() {
+
+        MainTicket nieuwTicket = new MainTicket();
 
         nieuwTicket.setIngegevenLeverAdres( cbEindklantLeverAdres.getValue() );
         nieuwTicket.setAanvraagDatumTicket(dpDatumTicket.getValue());
@@ -120,10 +130,42 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
         nieuwTicket.setOfferte(checkbofferte.getValue());
         nieuwTicket.setOfferteGoedgekeurd(checkbOfferteGoedgekeurd.getValue());
 
-        //TODO
-        //autogenerate AM- number
+        //TODO autogenerate TicketNumber!!!
+
 
         mainTicketRepository.save(nieuwTicket);
+
+    }
+
+    public void saveSameTicket() {
+
+
+
+        nieuwTicket.setIngegevenLeverAdres( cbEindklantLeverAdres.getValue() );
+        nieuwTicket.setAanvraagDatumTicket(dpDatumTicket.getValue());
+        nieuwTicket.setContactPersoonEindklant(cbEindklantContactPersoon.getValue());
+        nieuwTicket.setContactPersoonKlant(cbContactPersoon.getValue());
+        nieuwTicket.setEindKlant(cbEindklant.getValue());
+        nieuwTicket.setInterneOpmerkingen(tfInterneOmperkingen.getValue());
+        nieuwTicket.setOpdrachtgever(cbOpdrachtgever.getValue());
+        nieuwTicket.setPrioriteitTicket(cbPrioriteitTicket.getValue());
+        nieuwTicket.setReferentieEindklant(tfEindklantReferentie.getValue());
+        nieuwTicket.setReferentieOpdrachtgever(tfReferentieOpdrachtgever.getValue());
+        nieuwTicket.setVraagKlant(tfProbleemOmschrijving.getValue());
+        nieuwTicket.setTicketNummer(tfTicketnummer.getValue());
+
+        nieuwTicket.setInterventie(checkbInterventie.getValue());
+        nieuwTicket.setHerstellingBestek( checkbBestek.getValue() );
+        nieuwTicket.setHerstellingGoedgekeurd(checkbBestekGoedgekeurd.getValue());
+        nieuwTicket.setHerstellingUitvoer(checkbUitvoering.getValue());
+        nieuwTicket.setOfferte(checkbofferte.getValue());
+        nieuwTicket.setOfferteGoedgekeurd(checkbOfferteGoedgekeurd.getValue());
+
+        //TODO autogenerate TicketNumber!!!
+
+
+        mainTicketRepository.save(nieuwTicket);
+
     }
 
     private void fillEindklantCombobox(Klanten geselecteerdeKlant) {
@@ -182,6 +224,8 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
     public void fillMainTicketItemsFromSearch(MainTicket mainTicket){
 
+
+        nieuwTicket = mainTicket;
         //fill all fields for MainTicket
         dpDatumTicket.setValue(mainTicket.getAanvraagDatumTicket());
         cbEindklantContactPersoon.setValue(mainTicket.getContactPersoonEindklant());
@@ -210,14 +254,57 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
         }
 
         public void setDetailTicket(DetailTicket receivedDetailTicket) {
-            nieuwTicket.setDetail( receivedDetailTicket );
-            System.out.printf(""+ nieuwTicket.getDetails().toString());
+
+                ListIterator<DetailTicket>detailTicketIterator = nieuwTicket.getDetails().listIterator();
+                Boolean i = false;
+
+                //System.out.println( "receivedDetailTicket timestamp = "+ receivedDetailTicket.getDetailAanmaakDatum().toString() );
+
+                while(detailTicketIterator.hasNext()){
+
+                   // System.out.println( "iterated timestamps = "+ detailTicketIterator.next().getDetailAanmaakDatum().toString() );
+
+                   if (receivedDetailTicket.getDetailAanmaakDatum().equals( detailTicketIterator.next().getDetailAanmaakDatum() ) == true){
+
+                       detailTicketIterator.set( receivedDetailTicket );
+                        i = true;
+                    }
+
+                }
+
+                if( i == true) {
+                    Notification.show( "detail is aangpast" );
+                }
+
+                else {
+                    Notification.show( "nieuw detail is aangemaakt" );
+                    nieuwTicket.setDetail( receivedDetailTicket );
+                }
+
+
         }
+
+    public void removeDetailTicket(DetailTicket receivedDetailTicket) {
+
+        ListIterator<DetailTicket>detailTicketIterator = nieuwTicket.getDetails().listIterator();
+
+        while(detailTicketIterator.hasNext()){
+
+
+            if (receivedDetailTicket.getDetailAanmaakDatum().equals( detailTicketIterator.next().getDetailAanmaakDatum() ) == true){
+
+               detailTicketIterator.remove();
+            }
+
+        }
+
+
+    }
 
         public void clearDataFromTicketView(){
 
             //fill all fields for MainTicket
-            dpDatumTicket.setValue(LocalDate.now());
+            dpDatumTicket.setValue(LocalDateTime.now());
 
 
             cbOpdrachtgever.setSelectedItem( null );
@@ -240,4 +327,6 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
 
         }
+
+
 }

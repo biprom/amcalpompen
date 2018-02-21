@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,7 +41,7 @@ public class MainTicket {
     private String interneOpmerkingen;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDate aanvraagDatumTicket;
+    private LocalDateTime aanvraagDatumTicket;
 
     private String ticketNummer;
 
@@ -180,11 +181,11 @@ public class MainTicket {
         this.interneOpmerkingen = interneOpmerkingen;
     }
 
-    public LocalDate getAanvraagDatumTicket() {
+    public LocalDateTime getAanvraagDatumTicket() {
         return aanvraagDatumTicket;
     }
 
-    public void setAanvraagDatumTicket(LocalDate aanvraagDatumTicket) {
+    public void setAanvraagDatumTicket(LocalDateTime aanvraagDatumTicket) {
         this.aanvraagDatumTicket = aanvraagDatumTicket;
     }
 

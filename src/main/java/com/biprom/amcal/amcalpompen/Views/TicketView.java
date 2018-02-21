@@ -10,8 +10,10 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.TabSheet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,51 +38,50 @@ public class TicketView extends TicketDesign implements View {
     public TicketView(NieuwTicketView nieuwTicketView) {
         this.nieuwTicketView = nieuwTicketView;
 
-
-
-
-    }
-
-
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
-
         ticketTabSheet.addTab( nieuwTicketView, "BASISGEGEVENS TICKET");
 
         bNieuwDetail.addClickListener( e ->  {
-            ticketTabSheet.addTab(  new DetailGegevensTicketView(), "DETAIL - " + Math.random());
+            ticketTabSheet.addTab(  new DetailGegevensTicketView(), "DETAIL - " + LocalDateTime.now() );
         });
 
         bVerwijderDetail.addClickListener( e -> {
+            detailGegevensTicketView = (DetailGegevensTicketView) ticketTabSheet.getSelectedTab();
+            nieuwTicketView.removeDetailTicket( detailGegevensTicketView.saveDetailTicket() );
+            nieuwTicketView.saveSameTicket();
             ticketTabSheet.removeComponent( ticketTabSheet.getSelectedTab() );
         } );
 
         bBewaarDeetail.addClickListener( e -> {
             detailGegevensTicketView = (DetailGegevensTicketView) ticketTabSheet.getSelectedTab();
             nieuwTicketView.setDetailTicket( detailGegevensTicketView.saveDetailTicket() );
-            nieuwTicketView.saveTicket();
+            nieuwTicketView.saveSameTicket();
+
         });
 
 
     }
 
+
+
+
     public void setMainTicketItems(MainTicket mainTicket){
+
+        ticketTabSheet.removeAllComponents();
+        ticketTabSheet.addTab( nieuwTicketView, "BASISGEGEVENS TICKET");
         nieuwTicketView.fillMainTicketItemsFromSearch(mainTicket);
 
-       // Iterator<DetailTicket>detailTicketIterator = mainTicket.getDetails().iterator();
-       // while (detailTicketIterator.hasNext()){
-       //     fillDetailTicket(detailTicketIterator.next());
+        Iterator<DetailTicket>detailTicketIterator = mainTicket.getDetails().iterator();
+        while (detailTicketIterator.hasNext()){
+            DetailGegevensTicketView dgtv = new DetailGegevensTicketView();
+            DetailTicket detailTicket = detailTicketIterator.next();
+            dgtv.setDetailTicketViewWithData(  detailTicket );
+            ticketTabSheet.addTab( dgtv , "DETAIL - "+ detailTicket.getDetailAanmaakDatum());
 
-        //}
+        }
 
 
     }
 
-    private void fillDetailTicket(DetailTicket detailTicket) {
-        //ticketTabSheet.addTab( detailGegevensTicketView, "DETAIL - " );
-    }
-
-    //fill all fields for detailTicket
 
 
 
