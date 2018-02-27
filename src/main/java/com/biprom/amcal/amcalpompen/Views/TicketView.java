@@ -1,5 +1,6 @@
 package com.biprom.amcal.amcalpompen.Views;
 
+import com.biprom.amcal.amcalpompen.Configuration.ConfDetailGegevensTicketView;
 import com.biprom.amcal.amcalpompen.Design.TicketDesign;
 import com.biprom.amcal.amcalpompen.Entities.DetailTicket;
 import com.biprom.amcal.amcalpompen.Entities.MainTicket;
@@ -9,11 +10,17 @@ import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.TabSheet;
+import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.support.GenericBeanDefinition;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,6 +39,8 @@ public class TicketView extends TicketDesign implements View {
 
     public NieuwTicketView nieuwTicketView;
     public DetailGegevensTicketView detailGegevensTicketView;
+    ApplicationContext context = new AnnotationConfigApplicationContext(ConfDetailGegevensTicketView.class);
+
 
 
     @Autowired
@@ -41,7 +50,7 @@ public class TicketView extends TicketDesign implements View {
         ticketTabSheet.addTab( nieuwTicketView, "BASISGEGEVENS TICKET");
 
         bNieuwDetail.addClickListener( e ->  {
-            ticketTabSheet.addTab(  new DetailGegevensTicketView(), "DETAIL - " + LocalDateTime.now() );
+            ticketTabSheet.addTab(context.getBean( DetailGegevensTicketView.class ), "DETAIL - " + LocalDateTime.now() );
         });
 
         bVerwijderDetail.addClickListener( e -> {
