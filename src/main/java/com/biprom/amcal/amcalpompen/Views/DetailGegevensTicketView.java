@@ -1,33 +1,38 @@
 package com.biprom.amcal.amcalpompen.Views;
 
+import com.biprom.amcal.amcalpompen.Configuration.DetailGegevensTicketConf;
 import com.biprom.amcal.amcalpompen.Design.DetailTicketDesign;
 import com.biprom.amcal.amcalpompen.Entities.DetailTicket;
 import com.biprom.amcal.amcalpompen.SubWindows.ProductSubWindow;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.UI;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import java.time.LocalDateTime;
-
-
 
 public class DetailGegevensTicketView extends DetailTicketDesign implements View {
 
     public static final String VIEW_NAME = "ticketDetail";
 
-    //@Autowired
-    //ProductSubWindow productSubWindow;
-
     DetailTicket detailTicket = new DetailTicket();
+    ProductSubWindow productSubWindow;
+
 
     public DetailGegevensTicketView() {
+
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext( DetailGegevensTicketConf.class );
+
 
         datefAanmaakDatum.setValue( LocalDateTime.now() );
 
         bAddProduct.addClickListener( f -> {
-           // UI.getCurrent().addWindow( productSubWindow);
-           // productSubWindow.setHeight("600px");
-           // productSubWindow.setWidth("1200px");
-            //productSubWindow.setModal( true );
+
+            productSubWindow = context.getBean( ProductSubWindow.class );
+            UI.getCurrent().addWindow( productSubWindow);
+            productSubWindow.setHeight("600px");
+            productSubWindow.setWidth("1200px");
+            productSubWindow.setModal( true );
+
         });
     }
 

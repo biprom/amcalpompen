@@ -1,47 +1,31 @@
 package com.biprom.amcal.amcalpompen.SubWindows;
 
 import com.biprom.amcal.amcalpompen.Entities.Product;
+import com.biprom.amcal.amcalpompen.repositories.CustomerRepository;
 import com.biprom.amcal.amcalpompen.repositories.ProductRepository;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
-@SpringComponent
-@UIScope
-
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class ProductSubWindow extends Window {
 
-    ProductRepository productRepository;
+    @Autowired
+    TestClass testClass;
 
     ComboBox<Product>productComboBox;
 
-    @Autowired
-    public ProductSubWindow(ProductRepository productRepository) {
+    public ProductSubWindow() {
 
-        super("selecteer het materiaal");
-
-        this.productRepository = productRepository;
-
-        center();
-
-        setClosable( true );
-
-        setContent( generateContent() );
+        testClass.setMessage( "Inderdaad dit is hij zeker :-)" );
 
         productComboBox = new ComboBox<Product>(  );
 
+        setContent( productComboBox );
+
+
     }
 
-    private VerticalLayout generateContent(){
-        VerticalLayout verticalLayout = new VerticalLayout(  );
-        HorizontalLayout upperHorizontalLayout = new HorizontalLayout(  );
-        upperHorizontalLayout.setCaption( "selecteer het product dat u wil toevoegen" );
-        upperHorizontalLayout.addComponentsAndExpand( productComboBox );
-        verticalLayout.addComponent( upperHorizontalLayout );
 
-        return verticalLayout;
-    }
 }
