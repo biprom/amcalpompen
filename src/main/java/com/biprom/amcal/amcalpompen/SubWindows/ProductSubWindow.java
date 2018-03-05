@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 public class ProductSubWindow extends Window {
 
-    @Autowired
-    TestClass testClass;
+    //@Autowired
+   // TestClass testClass;
 
     ComboBox<Product>productComboBox;
 
     public ProductSubWindow() {
 
-        testClass.setMessage( "Inderdaad dit is hij zeker :-)" );
+        //testClass.setMessage( "Inderdaad dit is hij zeker :-)" );
 
         productComboBox = new ComboBox<Product>(  );
 
