@@ -1,8 +1,11 @@
 package com.biprom.amcal.amcalpompen.SubWindows;
 
 import com.vaadin.spring.annotation.SpringComponent;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-@SpringComponent
+
+
 public class TestClass {
 
     private String message;

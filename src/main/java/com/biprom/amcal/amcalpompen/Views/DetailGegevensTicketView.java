@@ -6,19 +6,25 @@ import com.biprom.amcal.amcalpompen.Entities.DetailTicket;
 import com.biprom.amcal.amcalpompen.SubWindows.ProductSubWindow;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.UI;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.time.LocalDateTime;
+
 
 public class DetailGegevensTicketView extends DetailTicketDesign implements View {
 
     public static final String VIEW_NAME = "ticketDetail";
 
     DetailTicket detailTicket = new DetailTicket();
+
+
     ProductSubWindow productSubWindow;
 
 
     public DetailGegevensTicketView() {
+
+
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext( DetailGegevensTicketConf.class );
 
@@ -35,6 +41,8 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
         });
     }
+
+
 
     public DetailTicket saveDetailTicket(){
 
