@@ -15,12 +15,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class ProductSubWindow extends Window {
 
     ComboBox<Product>productComboBox;
-    ProductRepository productRepository;
 
+    //ProductRepository productRepository;
 
     public ProductSubWindow() {
 
+        //this.productRepository = productRepository;
 
+        System.out.println("ProductSubWindow bean is aangemaakt");
 
     }
 

@@ -12,11 +12,13 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class DetailGegevensTicketConf {
 
+    //@Autowired
+    //ProductRepository productRepository;
 
     @Bean
     @Scope("prototype")
     public DetailGegevensTicketView getDetailGegevensTicketView(){
-        return new DetailGegevensTicketView();
+        return new DetailGegevensTicketView(productSubWindow());
     }
 
     @Bean

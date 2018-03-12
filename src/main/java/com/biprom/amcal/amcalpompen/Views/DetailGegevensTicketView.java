@@ -22,18 +22,16 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
     ProductSubWindow productSubWindow;
 
 
-    public DetailGegevensTicketView() {
+    public DetailGegevensTicketView(ProductSubWindow productSubWindow) {
 
-
-
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext( DetailGegevensTicketConf.class );
+        this.productSubWindow = productSubWindow;
+        System.out.println("DetailGegevensTicketView bean is aangemaakt");
 
 
         datefAanmaakDatum.setValue( LocalDateTime.now() );
 
         bAddProduct.addClickListener( f -> {
 
-            productSubWindow = context.getBean( ProductSubWindow.class );
             UI.getCurrent().addWindow( productSubWindow);
             productSubWindow.setHeight("600px");
             productSubWindow.setWidth("1200px");
