@@ -22,7 +22,6 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 //        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext( DetailGegevensTicketConf.class );
 
-
 		datefAanmaakDatum.setValue(LocalDateTime.now());
 
 		bAddProduct.addClickListener(f -> {

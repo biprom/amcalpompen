@@ -8,7 +8,9 @@ import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 
 import static com.biprom.amcal.amcalpompen.Views.TicketView.VIEW_NAME;
@@ -26,32 +28,33 @@ public class TicketView extends TicketDesign implements View {
 
 	NieuwTicketView nieuwTicketView;
 
-	DetailGegevensTicketView detailGegevensTicketView;
+	ApplicationContext context;
+
+	//DetailGegevensTicketView detailGegevensTicketView;
 
 	//AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext( DetailGegevensTicketConf.class );
 
 	@Autowired
-	public TicketView(NieuwTicketView nieuwTicketView, DetailGegevensTicketView detailGegevensTicketView) {
+	public TicketView(NieuwTicketView nieuwTicketView, ApplicationContext context) {
 		this.nieuwTicketView = nieuwTicketView;
-		this.detailGegevensTicketView = detailGegevensTicketView;
 
 
 		ticketTabSheet.addTab(nieuwTicketView, "BASISGEGEVENS TICKET");
 
 		bNieuwDetail.addClickListener(e -> {
-//			ticketTabSheet.addTab(context.getBean(DetailGegevensTicketView.class), "DETAIL - " + LocalDateTime.now());
-			ticketTabSheet.addTab(detailGegevensTicketView);
+			final DetailGegevensTicketView dgtv = context.getBean(DetailGegevensTicketView.class);
+			ticketTabSheet.addTab(dgtv, "DETAIL - " + LocalDateTime.now());
 		});
 
 		bVerwijderDetail.addClickListener(e -> {
-//			detailGegevensTicketView = (DetailGegevensTicketView) ticketTabSheet.getSelectedTab();
+			DetailGegevensTicketView detailGegevensTicketView = (DetailGegevensTicketView) ticketTabSheet.getSelectedTab();
 			nieuwTicketView.removeDetailTicket(detailGegevensTicketView.saveDetailTicket());
 			nieuwTicketView.saveSameTicket();
 			ticketTabSheet.removeComponent(ticketTabSheet.getSelectedTab());
 		});
 
 		bBewaarDeetail.addClickListener(e -> {
-//			detailGegevensTicketView = (DetailGegevensTicketView) ticketTabSheet.getSelectedTab();
+			DetailGegevensTicketView detailGegevensTicketView = (DetailGegevensTicketView) ticketTabSheet.getSelectedTab();
 			nieuwTicketView.setDetailTicket(detailGegevensTicketView.saveDetailTicket());
 			nieuwTicketView.saveSameTicket();
 
@@ -69,11 +72,10 @@ public class TicketView extends TicketDesign implements View {
 
 		Iterator<DetailTicket> detailTicketIterator = mainTicket.getDetails().iterator();
 		while (detailTicketIterator.hasNext()) {
-//			DetailGegevensTicketView dgtv = context.getBean(DetailGegevensTicketView.class);
+			DetailGegevensTicketView dgtv = context.getBean(DetailGegevensTicketView.class);
 			DetailTicket detailTicket = detailTicketIterator.next();
-			detailGegevensTicketView.setDetailTicketViewWithData(detailTicket);
-			ticketTabSheet.addTab(detailGegevensTicketView, "DETAIL - " + detailTicket.getDetailAanmaakDatum());
-
+			dgtv.setDetailTicketViewWithData(detailTicket);
+			ticketTabSheet.addTab(dgtv, "DETAIL - " + detailTicket.getDetailAanmaakDatum());
 		}
 
 
