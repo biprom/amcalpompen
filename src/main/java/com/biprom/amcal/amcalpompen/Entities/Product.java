@@ -6,27 +6,51 @@ import org.springframework.data.annotation.Id;
 public class Product {
 
     @Id
-    String id;
+    String index;
 
+    Integer aantal;
     Integer aantalGebruikt;
-    String artikelNummer;
-    String EANNummer;
-    Double gewichtArtikel;
-    String linkGrudfos;
     String omschrijvingArtikelFabrikant;
     String omschrijvingArtikelAmccal;
+    String artikelNummer;
+    String EANNummer;
     Boolean artikelGebruikt;
+    String linkGrundfos;
+    Double gewichtArtikel;
     Double bruto2018;
     String prijsGroep2018;
     Double korting;
 
+    public String getIndex() {
+        return index;
+    }
 
-    public Integer getAantal() {
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
+    public Integer getAantalGebruikt() {
         return aantalGebruikt;
     }
 
+    public void setAantalGebruikt(Integer aantalGebruikt) {
+        this.aantalGebruikt = aantalGebruikt;
+    }
+
+    public String getLinkGrundfos() {
+        return linkGrundfos;
+    }
+
+    public void setLinkGrundfos(String linkGrundfos) {
+        this.linkGrundfos = linkGrundfos;
+    }
+
+    public Integer getAantal() {
+        return aantal;
+    }
+
     public void setAantal(Integer aantal) {
-        this.aantalGebruikt = aantal;
+        this.aantal = aantal;
     }
 
     public String getArtikelNummer() {
@@ -54,11 +78,11 @@ public class Product {
     }
 
     public String getLinkGrudfos() {
-        return linkGrudfos;
+        return linkGrundfos;
     }
 
     public void setLinkGrudfos(String linkGrudfos) {
-        this.linkGrudfos = linkGrudfos;
+        this.linkGrundfos = linkGrudfos;
     }
 
     public String getOmschrijvingArtikelFabrikant() {

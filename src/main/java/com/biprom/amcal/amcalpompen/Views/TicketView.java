@@ -7,6 +7,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -30,14 +31,10 @@ public class TicketView extends TicketDesign implements View {
 
 	ApplicationContext context;
 
-	//DetailGegevensTicketView detailGegevensTicketView;
-
-	//AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext( DetailGegevensTicketConf.class );
-
 	@Autowired
 	public TicketView(NieuwTicketView nieuwTicketView, ApplicationContext context) {
 		this.nieuwTicketView = nieuwTicketView;
-
+        this.context = context;
 
 		ticketTabSheet.addTab(nieuwTicketView, "BASISGEGEVENS TICKET");
 
@@ -66,16 +63,19 @@ public class TicketView extends TicketDesign implements View {
 
 	public void setMainTicketItems(MainTicket mainTicket) {
 
+		int i = 1;
+
 		ticketTabSheet.removeAllComponents();
 		ticketTabSheet.addTab(nieuwTicketView, "BASISGEGEVENS TICKET");
 		nieuwTicketView.fillMainTicketItemsFromSearch(mainTicket);
 
 		Iterator<DetailTicket> detailTicketIterator = mainTicket.getDetails().iterator();
 		while (detailTicketIterator.hasNext()) {
-			DetailGegevensTicketView dgtv = context.getBean(DetailGegevensTicketView.class);
+
 			DetailTicket detailTicket = detailTicketIterator.next();
+			DetailGegevensTicketView dgtv = context.getBean(DetailGegevensTicketView.class);
 			dgtv.setDetailTicketViewWithData(detailTicket);
-			ticketTabSheet.addTab(dgtv, "DETAIL - " + detailTicket.getDetailAanmaakDatum());
+			ticketTabSheet.addTab(dgtv, "DETAIL - " +LocalDateTime.now());
 		}
 
 

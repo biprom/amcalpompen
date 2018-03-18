@@ -17,8 +17,8 @@
      </vaadin-horizontal-layout>
      <vaadin-text-area caption="Omschrijving installatie" width-full _id="taOmschrijvingInstallatie"></vaadin-text-area>
      <vaadin-upload button-caption="Plaats foto" width-full _id="uplFotoInstallatie"></vaadin-upload>
-     <vaadin-horizontal-layout caption="Pomp">
-      <vaadin-text-field caption="Artikelnummer pomp" description="Artikelnummer installatie" _id="tfArtikelNummerPomp"></vaadin-text-field>
+     <vaadin-horizontal-layout caption="Pomp" width-full>
+      <vaadin-combo-box caption="Artikelcode pomp" width-full data-item-type="com.biprom.amcal.amcalpompen.Entities.Product" _id="cbArtikelNummerPomp1" :expand></vaadin-combo-box>
       <vaadin-text-field caption="Pompjaar" _id="tfJaarPomp"></vaadin-text-field>
       <vaadin-text-field caption="Pompweek" _id="tfWeekPomp"></vaadin-text-field>
      </vaadin-horizontal-layout>
@@ -27,7 +27,7 @@
      <vaadin-button style-name="friendly" plain-text _id="bAddProduct">
        Voeg materiaal toe 
      </vaadin-button>
-     <vaadin-grid caption="Benodigd materiaal" width-full data-item-type="com.biprom.amcal.amcalpompen.Entities.Product" _id="tbBenodigdMateriaal">
+     <vaadin-grid caption="Benodigd materiaal" column-reordering-allowed width-full data-item-type="com.biprom.amcal.amcalpompen.Entities.Product" _id="tbBenodigdMateriaal">
       <table>
        <colgroup>
         <col column-id="aantal" sortable>

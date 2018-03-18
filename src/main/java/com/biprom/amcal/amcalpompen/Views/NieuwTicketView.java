@@ -54,6 +54,7 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
         cbContactPersoon.setEmptySelectionAllowed( true );
 
+
         klantenLijst = customerRepository.findAll();
         cbOpdrachtgever.setItems(klantenLijst);
         cbOpdrachtgever.setItemCaptionGenerator( p  -> p.getBedrijfsNaam());
