@@ -8,13 +8,11 @@ import com.biprom.amcal.amcalpompen.Upload.LineBreakCounter;
 import com.biprom.amcal.amcalpompen.Upload.UploadInfoWindow;
 import com.biprom.amcal.amcalpompen.repositories.ProductRepository;
 import com.vaadin.data.Binder;
-import com.vaadin.data.converter.StringToIntegerConverter;
-import com.vaadin.event.dd.acceptcriteria.Not;
 import com.vaadin.navigator.View;
-import com.vaadin.ui.CheckBoxGroup;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
+import com.vaadin.v7.data.Property;
+import eu.maxschuster.vaadin.signaturefield.SignatureField;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
@@ -24,6 +22,8 @@ import java.util.*;
 public class DetailGegevensTicketView extends DetailTicketDesign implements View {
 
 	public static final String VIEW_NAME = "ticketDetail";
+
+	SignatureField signatureField = new SignatureField(  );
 
 	LineBreakCounter lineBreakCounter = new LineBreakCounter();
 	UploadInfoWindow uploadInfoWindow;
@@ -46,47 +46,61 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 		this.productSubWindow = productSubWindow;
 		this.productRepository = productRepository;
 
-		datefAanmaakDatum.setValue(LocalDateTime.now());
+		datefAanmaakDatum.setValue( LocalDateTime.now() );
 
 
-			cbArtikelNummerPomp1.addFocusListener( c -> {
-				setCBArtikelNummerPomp();
-			} );
+		cbArtikelNummerPomp1.addFocusListener( c -> {
+			setCBArtikelNummerPomp();
+		} );
 
-		bAddProduct.addClickListener(f -> {
+		bAddProduct.addClickListener( f -> {
 
-			productSubWindow.setDetailGegevenTicketViewInstance(this);
-			UI.getCurrent().addWindow(productSubWindow);
-			productSubWindow.setHeight("600px");
-			productSubWindow.setWidth("1200px");
-			productSubWindow.setModal(true);
+			productSubWindow.setDetailGegevenTicketViewInstance( this );
+			UI.getCurrent().addWindow( productSubWindow );
+			productSubWindow.setHeight( "600px" );
+			productSubWindow.setWidth( "1200px" );
+			productSubWindow.setModal( true );
 
 
-		});
+		} );
 
 		tbBenodigdMateriaal.getEditor().setEnabled( true );
 		tbBenodigdMateriaal.removeColumn( "prijsGroep2018" );
 		tbBenodigdMateriaal.removeColumn( "eANNummer" );
 		tbBenodigdMateriaal.removeColumn( "linkGrudfos" );
-		tbBenodigdMateriaal.addColumn( "aantalGebruikt" );;
+		tbBenodigdMateriaal.addColumn( "aantalGebruikt" );
+		;
 		tbBenodigdMateriaal.setColumnOrder( "aantal", "artikelNummer", "omschrijvingArtikelFabrikant", "omschrijvingArtikelAmccal", "aantalGebruikt", "artikelGebruikt", "bruto2018", "korting" );
 
-		lineBreakCounter.setSlow(true);
+		lineBreakCounter.setSlow( true );
 		ulFoto.setReceiver( lineBreakCounter );
 
-		ulFoto.setImmediateMode(false);
-		ulFoto.setButtonCaption("Upload File");
+		ulFoto.setImmediateMode( false );
+		ulFoto.setButtonCaption( "Upload File" );
 
-		uploadInfoWindow = new UploadInfoWindow(ulFoto, lineBreakCounter);
+		uploadInfoWindow = new UploadInfoWindow( ulFoto, lineBreakCounter );
 
-		ulFoto.addStartedListener(event -> {
+		ulFoto.addStartedListener( event -> {
 
 			if (uploadInfoWindow.getParent() == null) {
-				UI.getCurrent().addWindow(uploadInfoWindow);
+				UI.getCurrent().addWindow( uploadInfoWindow );
 			}
-			uploadInfoWindow.setClosable(false);
-		});
-		ulFoto.addFinishedListener(event -> uploadInfoWindow.setClosable(true));
+			uploadInfoWindow.setClosable( false );
+		} );
+		ulFoto.addFinishedListener( event -> uploadInfoWindow.setClosable( true ) );
+
+		signatureField.setWidth( "350px" );
+		signatureField.setHeight( "150px" );
+
+		hLayoutSign.addComponent( signatureField );
+
+		signatureField.addValueChangeListener( new Property.ValueChangeListener() {
+			@Override
+			public void valueChange(Property.ValueChangeEvent event) {
+				String signature = (String) event.getProperty().getValue();
+				// do something with the string
+			}
+		} );
 
 	}
 
