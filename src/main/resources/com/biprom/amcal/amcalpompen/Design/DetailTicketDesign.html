@@ -9,6 +9,16 @@
   <vaadin-vertical-layout size-full>
    <vaadin-panel size-full :expand>
     <vaadin-vertical-layout>
+     <vaadin-horizontal-layout style-name="v-component-group" width-full margin>
+      <vaadin-check-box caption="interventie" _id="checkbInterventie"></vaadin-check-box>
+      <vaadin-check-box caption="herstelling: bestek" _id="checkbHerstellingBestek"></vaadin-check-box>
+      <vaadin-check-box caption="herstelling : uitvoer" _id="checkbHerstellingUitvoer"></vaadin-check-box>
+      <vaadin-check-box caption="offerte" _id="checkbOfferte"></vaadin-check-box>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout width-full margin>
+      <vaadin-check-box caption="bestek goedgekeurd" _id="checkbBestekGoedgekeurd"></vaadin-check-box>
+      <vaadin-check-box caption="offerte goedgekeurd" _id="checkbOfferteGoedgekeurd"></vaadin-check-box>
+     </vaadin-horizontal-layout>
      <vaadin-horizontal-layout caption="Installatie">
       <vaadin-text-field caption="Artikelnummer installatie" description="Artikelnummer installatie" _id="tfArtikelNummer"></vaadin-text-field>
       <vaadin-text-field caption="Installatiejaar" _id="tfJaarInstallatie"></vaadin-text-field>
@@ -23,7 +33,7 @@
       <vaadin-text-field caption="Pompweek" _id="tfWeekPomp"></vaadin-text-field>
      </vaadin-horizontal-layout>
      <vaadin-text-area caption="Omschrijving pomp" width-full _id="taOmschrijvingPomp"></vaadin-text-area>
-     <vaadin-upload button-caption="Plaats foto" width-full _id="ulFotoPomp"></vaadin-upload>
+     <vaadin-upload button-caption="Plaats foto" width-full _id="ulFoto"></vaadin-upload>
      <vaadin-button style-name="friendly" plain-text _id="bAddProduct">
        Voeg materiaal toe 
      </vaadin-button>

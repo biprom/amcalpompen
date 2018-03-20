@@ -41,6 +41,13 @@ public class DetailTicket {
 
     private int ramingUren;
 
+    private boolean bInterventie;
+    private boolean bHerstellingBestek;
+    private boolean bBestekGoedgekeurd;
+    private boolean bHerstellingUitvoer;
+    private boolean bOfferte;
+    private boolean bOfferteGoedgekeurd;
+
     private boolean opdrachtAfgewerkt;
     private boolean tussentijdseFacturatieMogelijk;
     private boolean verderInTePlannen;
@@ -187,5 +194,53 @@ public class DetailTicket {
 
     public void setDetailAanmaakDatum(LocalDateTime detailAanmaakDatum) {
         this.detailAanmaakDatum = detailAanmaakDatum;
+    }
+
+    public boolean isbInterventie() {
+        return bInterventie;
+    }
+
+    public void setbInterventie(boolean bInterventie) {
+        this.bInterventie = bInterventie;
+    }
+
+    public boolean isbHerstellingBestek() {
+        return bHerstellingBestek;
+    }
+
+    public void setbHerstellingBestek(boolean bHerstellingBestek) {
+        this.bHerstellingBestek = bHerstellingBestek;
+    }
+
+    public boolean isbBestekGoedgekeurd() {
+        return bBestekGoedgekeurd;
+    }
+
+    public void setbBestekGoedgekeurd(boolean bBestekGoedgekeurd) {
+        this.bBestekGoedgekeurd = bBestekGoedgekeurd;
+    }
+
+    public boolean isbHerstellingUitvoer() {
+        return bHerstellingUitvoer;
+    }
+
+    public void setbHerstellingUitvoer(boolean bHerstellingUitvoer) {
+        this.bHerstellingUitvoer = bHerstellingUitvoer;
+    }
+
+    public boolean isbOfferte() {
+        return bOfferte;
+    }
+
+    public void setbOfferte(boolean bOfferte) {
+        this.bOfferte = bOfferte;
+    }
+
+    public boolean isbOfferteGoedgekeurd() {
+        return bOfferteGoedgekeurd;
+    }
+
+    public void setbOfferteGoedgekeurd(boolean bOfferteGoedgekeurd) {
+        this.bOfferteGoedgekeurd = bOfferteGoedgekeurd;
     }
 }

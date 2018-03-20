@@ -31,6 +31,8 @@ public class TicketView extends TicketDesign implements View {
 
 	ApplicationContext context;
 
+	String subTabName = new String(  );
+
 	@Autowired
 	public TicketView(NieuwTicketView nieuwTicketView, ApplicationContext context) {
 		this.nieuwTicketView = nieuwTicketView;
@@ -63,19 +65,43 @@ public class TicketView extends TicketDesign implements View {
 
 	public void setMainTicketItems(MainTicket mainTicket) {
 
-		int i = 1;
-
 		ticketTabSheet.removeAllComponents();
 		ticketTabSheet.addTab(nieuwTicketView, "BASISGEGEVENS TICKET");
 		nieuwTicketView.fillMainTicketItemsFromSearch(mainTicket);
 
 		Iterator<DetailTicket> detailTicketIterator = mainTicket.getDetails().iterator();
+
 		while (detailTicketIterator.hasNext()) {
 
 			DetailTicket detailTicket = detailTicketIterator.next();
 			DetailGegevensTicketView dgtv = context.getBean(DetailGegevensTicketView.class);
 			dgtv.setDetailTicketViewWithData(detailTicket);
-			ticketTabSheet.addTab(dgtv, "DETAIL - " +LocalDateTime.now());
+
+			if (detailTicket.isbBestekGoedgekeurd()){
+				subTabName = "Bestek Goedgekeurd";
+			}
+
+			if (detailTicket.isbHerstellingBestek()){
+				subTabName = "Bestek Herstelling";
+			}
+
+			if (detailTicket.isbHerstellingUitvoer()){
+				subTabName = "Herstelling Uitvoer";
+			}
+
+			if (detailTicket.isbInterventie()){
+				subTabName = "Interventie";
+			}
+
+			if (detailTicket.isbOfferte()){
+				subTabName = "Offerte";
+			}
+
+			if (detailTicket.isbOfferteGoedgekeurd()){
+				subTabName = "Offerte Goedgekeurd";
+			}
+
+			ticketTabSheet.addTab(dgtv, "DETAIL - " + subTabName);
 		}
 
 

@@ -109,32 +109,32 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
     public void saveNewTicket() {
 
-        MainTicket nieuwTicket = new MainTicket();
+        MainTicket nieuwTicket1 = new MainTicket();
 
-        nieuwTicket.setIngegevenLeverAdres( cbEindklantLeverAdres.getValue() );
-        nieuwTicket.setAanvraagDatumTicket(dpDatumTicket.getValue());
-        nieuwTicket.setContactPersoonEindklant(cbEindklantContactPersoon.getValue());
-        nieuwTicket.setContactPersoonKlant(cbContactPersoon.getValue());
-        nieuwTicket.setEindKlant(cbEindklant.getValue());
-        nieuwTicket.setInterneOpmerkingen(tfInterneOmperkingen.getValue());
-        nieuwTicket.setOpdrachtgever(cbOpdrachtgever.getValue());
-        nieuwTicket.setPrioriteitTicket(cbPrioriteitTicket.getValue());
-        nieuwTicket.setReferentieEindklant(tfEindklantReferentie.getValue());
-        nieuwTicket.setReferentieOpdrachtgever(tfReferentieOpdrachtgever.getValue());
-        nieuwTicket.setVraagKlant(tfProbleemOmschrijving.getValue());
-        nieuwTicket.setTicketNummer(tfTicketnummer.getValue());
+        nieuwTicket1.setIngegevenLeverAdres( cbEindklantLeverAdres.getValue() );
+        nieuwTicket1.setAanvraagDatumTicket(dpDatumTicket.getValue());
+        nieuwTicket1.setContactPersoonEindklant(cbEindklantContactPersoon.getValue());
+        nieuwTicket1.setContactPersoonKlant(cbContactPersoon.getValue());
+        nieuwTicket1.setEindKlant(cbEindklant.getValue());
+        nieuwTicket1.setInterneOpmerkingen(tfInterneOmperkingen.getValue());
+        nieuwTicket1.setOpdrachtgever(cbOpdrachtgever.getValue());
+        nieuwTicket1.setPrioriteitTicket(cbPrioriteitTicket.getValue());
+        nieuwTicket1.setReferentieEindklant(tfEindklantReferentie.getValue());
+        nieuwTicket1.setReferentieOpdrachtgever(tfReferentieOpdrachtgever.getValue());
+        nieuwTicket1.setVraagKlant(tfProbleemOmschrijving.getValue());
+        nieuwTicket1.setTicketNummer(tfTicketnummer.getValue());
 
-        nieuwTicket.setInterventie(checkbInterventie.getValue());
-        nieuwTicket.setHerstellingBestek( checkbBestek.getValue() );
-        nieuwTicket.setHerstellingGoedgekeurd(checkbBestekGoedgekeurd.getValue());
-        nieuwTicket.setHerstellingUitvoer(checkbUitvoering.getValue());
-        nieuwTicket.setOfferte(checkbofferte.getValue());
-        nieuwTicket.setOfferteGoedgekeurd(checkbOfferteGoedgekeurd.getValue());
+        nieuwTicket1.setInterventie(checkbInterventie.getValue());
+        nieuwTicket1.setHerstellingBestek( checkbBestek.getValue() );
+        nieuwTicket1.setHerstellingGoedgekeurd(checkbBestekGoedgekeurd.getValue());
+        nieuwTicket1.setHerstellingUitvoer(checkbUitvoering.getValue());
+        nieuwTicket1.setOfferte(checkbofferte.getValue());
+        nieuwTicket1.setOfferteGoedgekeurd(checkbOfferteGoedgekeurd.getValue());
 
         //TODO autogenerate TicketNumber!!!
 
 
-        mainTicketRepository.save(nieuwTicket);
+        mainTicketRepository.save(nieuwTicket1);
 
     }
 
@@ -145,7 +145,9 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
         nieuwTicket.setIngegevenLeverAdres( cbEindklantLeverAdres.getValue() );
         nieuwTicket.setAanvraagDatumTicket(dpDatumTicket.getValue());
         nieuwTicket.setContactPersoonEindklant(cbEindklantContactPersoon.getValue());
+        System.out.println( "contactpersooneindklant = "+  cbEindklantContactPersoon.getValue());
         nieuwTicket.setContactPersoonKlant(cbContactPersoon.getValue());
+        System.out.println( "contactpersoonklant = "+  cbContactPersoon.getValue());
         nieuwTicket.setEindKlant(cbEindklant.getValue());
         nieuwTicket.setInterneOpmerkingen(tfInterneOmperkingen.getValue());
         nieuwTicket.setOpdrachtgever(cbOpdrachtgever.getValue());
@@ -228,28 +230,37 @@ public class NieuwTicketView extends nieuwTicketDesign implements View {
 
         nieuwTicket = mainTicket;
         //fill all fields for MainTicket
-        dpDatumTicket.setValue(mainTicket.getAanvraagDatumTicket());
-        cbEindklantContactPersoon.setValue(mainTicket.getContactPersoonEindklant());
-        cbContactPersoon.setValue(mainTicket.getContactPersoonKlant());
-        cbEindklant.setValue(mainTicket.getEindKlant());
 
-        tfInterneOmperkingen.setValue(mainTicket.getInterneOpmerkingen());
+        cbOpdrachtgever.setValue(nieuwTicket.getOpdrachtgever());
+        cbEindklant.setValue(nieuwTicket.getEindKlant());
+        dpDatumTicket.setValue(nieuwTicket.getAanvraagDatumTicket());
+        cbEindklantContactPersoon.setValue(nieuwTicket.getContactPersoonEindklant());
+        cbEindklantContactPersoon.setItemCaptionGenerator(p -> p.getVoorNaam() + " " + p.getNaam());
+        fillEindklantTelefoonTextField(nieuwTicket.getContactPersoonEindklant());
+        cbContactPersoon.setValue(nieuwTicket.getContactPersoonKlant());
+        cbContactPersoon.setItemCaptionGenerator(p -> p.getVoorNaam() + " " + p.getNaam());
+        fillAanvragerTelefoonTextField(nieuwTicket.getContactPersoonKlant());
 
-        cbOpdrachtgever.setValue(mainTicket.getOpdrachtgever());
-        cbPrioriteitTicket.setValue(mainTicket.getPrioriteitTicket());
-        tfEindklantReferentie.setValue(mainTicket.getReferentieEindklant());
-        tfReferentieOpdrachtgever.setValue(mainTicket.getReferentieOpdrachtgever());
-        tfProbleemOmschrijving.setValue(mainTicket.getVraagKlant());
-        tfTicketnummer.setValue(mainTicket.getTicketNummer());
-        cbFacturatieAdres.setValue( mainTicket.getOpdrachtgever().getFacturatieAdres() );
-        cbEindklantLeverAdres.setValue( mainTicket.getIngegevenLeverAdres() );
 
-        checkbInterventie.setValue( mainTicket.isInterventie() );
-        checkbBestek.setValue( mainTicket.isHerstellingBestek() );
-        checkbBestekGoedgekeurd.setValue( mainTicket.isHerstellingGoedgekeurd() );
-        checkbUitvoering.setValue( mainTicket.isHerstellingUitvoer() );
-        checkbofferte.setValue(mainTicket.isOfferte());
-        checkbOfferteGoedgekeurd.setValue(mainTicket.isOfferteGoedgekeurd());
+
+        tfInterneOmperkingen.setValue(nieuwTicket.getInterneOpmerkingen());
+
+
+
+        cbPrioriteitTicket.setValue(nieuwTicket.getPrioriteitTicket());
+        tfEindklantReferentie.setValue(nieuwTicket.getReferentieEindklant());
+        tfReferentieOpdrachtgever.setValue(nieuwTicket.getReferentieOpdrachtgever());
+        tfProbleemOmschrijving.setValue(nieuwTicket.getVraagKlant());
+        tfTicketnummer.setValue(nieuwTicket.getTicketNummer());
+        cbFacturatieAdres.setValue( nieuwTicket.getOpdrachtgever().getFacturatieAdres() );
+        cbEindklantLeverAdres.setValue( nieuwTicket.getIngegevenLeverAdres() );
+
+        checkbInterventie.setValue( nieuwTicket.isInterventie() );
+        checkbBestek.setValue( nieuwTicket.isHerstellingBestek() );
+        checkbBestekGoedgekeurd.setValue( nieuwTicket.isHerstellingGoedgekeurd() );
+        checkbUitvoering.setValue( nieuwTicket.isHerstellingUitvoer() );
+        checkbofferte.setValue(nieuwTicket.isOfferte());
+        checkbOfferteGoedgekeurd.setValue(nieuwTicket.isOfferteGoedgekeurd());
 
 
         }

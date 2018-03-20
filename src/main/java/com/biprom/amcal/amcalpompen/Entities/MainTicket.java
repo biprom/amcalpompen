@@ -52,13 +52,6 @@ public class MainTicket {
     public MainTicket() {
     }
 
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
 
     public Klanten getOpdrachtgever() {
         return opdrachtgever;

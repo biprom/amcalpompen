@@ -44,6 +44,11 @@ public class ZoekTicketView extends ZoekTicketDesign implements View {
         tblTickets.addColumn(MainTicket::getContactPersoonEindklantNaam).setCaption("Eindklant");
         tblTickets.addColumn(MainTicket::getAanvraagDatumTicket).setCaption("Ticket Datum");
         tblTickets.addColumn(MainTicket::getVraagKlant).setCaption("Opdracht");
+
+        tblTickets.addItemClickListener(selectionEvent -> {
+            ticketView.setMainTicketItems(selectionEvent.getItem());
+            subNavigator.navigateTo(TicketView.VIEW_NAME);
+        });
     }
 
 
@@ -53,12 +58,6 @@ public class ZoekTicketView extends ZoekTicketDesign implements View {
 
 
 
-        tblTickets.addSelectionListener(selectionEvent -> {
-
-
-                                        ticketView.setMainTicketItems(selectionEvent.getFirstSelectedItem().get());
-                                        subNavigator.navigateTo(TicketView.VIEW_NAME);
-        });
 
 
 
