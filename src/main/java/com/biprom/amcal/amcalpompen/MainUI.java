@@ -3,6 +3,7 @@ package com.biprom.amcal.amcalpompen;
 
 import com.biprom.amcal.amcalpompen.Entities.MainTicket;
 import com.biprom.amcal.amcalpompen.Views.MainView;
+import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -16,7 +17,9 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringUI
 @ComponentScan("com.biprom.amcal.amcalpompen")
-@Widgetset("MyWidgetset.Widgetset.gwt.xml")
+@VaadinServletConfiguration(ui = MainUI.class, productionMode = false, widgetset = "com.biprom.amcal.amcalpompen.WidgettestWidgetset")
+@Widgetset("com.biprom.amcal.amcalpompen.WidgettestWidgetset")
+
 public class MainUI extends UI {
 
     @Autowired
