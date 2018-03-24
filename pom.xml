@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<vaadin.version>8.1.0</vaadin.version>
+		<vaadin.version>8.3.2</vaadin.version>
 	</properties>
 
 	<dependencies>
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-server</artifactId>
-            <version>8.1.0</version>
+            <version>8.3.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -57,6 +57,33 @@
 			<groupId>eu.maxschuster</groupId>
 			<artifactId>vaadin-signaturefield</artifactId>
 			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.vaadin.blackbluegl</groupId>
+			<artifactId>calendar-component</artifactId>
+			<version>2.0-BETA3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-charts</artifactId>
+			<version>4.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-client</artifactId>
+			<version>8.3.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-client-compiled</artifactId>
+			<version>8.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-client-compiler</artifactId>
+			<version>8.3.2</version>
+			<scope>provided</scope>
 		</dependency>
     </dependencies>
 
@@ -84,7 +111,7 @@
 			<plugin>
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-maven-plugin</artifactId>
-				<version>8.1.0</version>
+				<version>8.3.2</version>
 
 				<configuration>
 					<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>

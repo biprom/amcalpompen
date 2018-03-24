@@ -17,8 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringUI
 @ComponentScan("com.biprom.amcal.amcalpompen")
-@VaadinServletConfiguration(ui = MainUI.class, productionMode = false, widgetset = "com.biprom.amcal.amcalpompen.WidgettestWidgetset")
-@Widgetset("com.biprom.amcal.amcalpompen.WidgettestWidgetset")
+//@Widgetset("com.biprom.amcal.amcalpompen.WidgettestWidgetset")
 
 public class MainUI extends UI {
 

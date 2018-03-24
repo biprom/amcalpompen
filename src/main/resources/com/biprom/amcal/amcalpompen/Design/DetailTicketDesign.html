@@ -37,39 +37,7 @@
      <vaadin-button style-name="friendly" plain-text _id="bAddProduct">
        Voeg materiaal toe 
      </vaadin-button>
-     <vaadin-grid caption="Benodigd materiaal" column-reordering-allowed width-full data-item-type="com.biprom.amcal.amcalpompen.Entities.Product" _id="tbBenodigdMateriaal">
-      <table>
-       <colgroup>
-        <col column-id="aantal" sortable>
-        <col column-id="artikelNummer" sortable>
-        <col column-id="eANNummer" sortable>
-        <col column-id="gewichtArtikel" sortable>
-        <col column-id="linkGrudfos" sortable>
-        <col column-id="omschrijvingArtikelFabrikant" sortable>
-        <col column-id="omschrijvingArtikelAmccal" sortable>
-        <col column-id="artikelGebruikt" sortable>
-        <col column-id="bruto2018" sortable>
-        <col column-id="prijsGroep2018" sortable>
-        <col column-id="korting" sortable>
-       </colgroup>
-       <thead>
-        <tr default>
-         <th plain-text column-ids="aantal">Aantal</th>
-         <th plain-text column-ids="artikelNummer">ArtikelNummer</th>
-         <th plain-text column-ids="eANNummer">EANNummer</th>
-         <th plain-text column-ids="gewichtArtikel">GewichtArtikel</th>
-         <th plain-text column-ids="linkGrudfos">LinkGrudfos</th>
-         <th plain-text column-ids="omschrijvingArtikelFabrikant">OmschrijvingArtikelFabrikant</th>
-         <th plain-text column-ids="omschrijvingArtikelAmccal">OmschrijvingArtikelAmccal</th>
-         <th plain-text column-ids="artikelGebruikt">ArtikelGebruikt</th>
-         <th plain-text column-ids="bruto2018">Bruto2018</th>
-         <th plain-text column-ids="prijsGroep2018">PrijsGroep2018</th>
-         <th plain-text column-ids="korting">Korting</th>
-        </tr>
-       </thead>
-       <tbody></tbody>
-      </table>
-     </vaadin-grid>
+     <vaadin-grid caption-as-html caption="Benodigd materiaal" column-reordering-allowed width-full data-item-type="com.biprom.amcal.amcalpompen.Entities.Product" _id="tbBenodigdMateriaal"></vaadin-grid>
      <vaadin-text-area caption="Vaststelling Technieker" width-full _id="taVaststellingTechnieker"></vaadin-text-area>
      <vaadin-text-area caption="Interne opmerkingen" width-full _id="taInterneOpmerkingen"></vaadin-text-area>
      <vaadin-grid caption-as-html caption="Werkuren" width-full data-item-type="com.biprom.amcal.amcalpompen.Entities.WerkUren" _id="tbWerkuren"></vaadin-grid>

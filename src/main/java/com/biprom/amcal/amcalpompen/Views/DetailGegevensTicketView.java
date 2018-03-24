@@ -7,11 +7,12 @@ import com.biprom.amcal.amcalpompen.SubWindows.ProductSubWindow;
 import com.biprom.amcal.amcalpompen.Upload.LineBreakCounter;
 import com.biprom.amcal.amcalpompen.Upload.UploadInfoWindow;
 import com.biprom.amcal.amcalpompen.repositories.ProductRepository;
+import com.google.gwt.dev.PrecompileOnePerm;
 import com.vaadin.data.Binder;
+import com.vaadin.data.converter.StringToIntegerConverter;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-import com.vaadin.v7.data.Property;
 import eu.maxschuster.vaadin.signaturefield.SignatureField;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,10 +35,9 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 	ProductRepository productRepository;
 	List<Product>artikelLijstOmschrijving;
 	List<Product> productList = new ArrayList<>();
-	TextField textfield1 = new TextField(  );
-	TextField textfield2 = new TextField(  );
-	TextField textfield3 = new TextField(  );
-	private Product product;
+	TextField tfAantal = new TextField(  );
+	TextField tfOmschrijvingAmcal = new TextField(  );
+
 	Binder<Product>productBinder;
 
 	@Autowired
@@ -64,13 +64,14 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 		} );
 
+
 		tbBenodigdMateriaal.getEditor().setEnabled( true );
-		tbBenodigdMateriaal.removeColumn( "prijsGroep2018" );
-		tbBenodigdMateriaal.removeColumn( "eANNummer" );
-		tbBenodigdMateriaal.removeColumn( "linkGrudfos" );
-		tbBenodigdMateriaal.addColumn( "aantalGebruikt" );
-		;
-		tbBenodigdMateriaal.setColumnOrder( "aantal", "artikelNummer", "omschrijvingArtikelFabrikant", "omschrijvingArtikelAmccal", "aantalGebruikt", "artikelGebruikt", "bruto2018", "korting" );
+
+		tbBenodigdMateriaal.addColumn(Product::getOmschrijvingArtikelAmccal).setEditorComponent(tfOmschrijvingAmcal, Product::setOmschrijvingArtikelAmccal).setCaption("Omschrijving Amcal").setExpandRatio(2);
+
+		productBinder = tbBenodigdMateriaal.getEditor().getBinder();
+		//Binder.Binding<Product, String> stringBinding = productBinder.bind( tfAantal, Product::getAantal, Product::setAantal );
+		//tbBenodigdMateriaal.addColumn( Product::getAantal ).setEditorBinding( stringBinding );
 
 		lineBreakCounter.setSlow( true );
 		ulFoto.setReceiver( lineBreakCounter );
@@ -94,13 +95,13 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 		hLayoutSign.addComponent( signatureField );
 
-		signatureField.addValueChangeListener( new Property.ValueChangeListener() {
-			@Override
-			public void valueChange(Property.ValueChangeEvent event) {
-				String signature = (String) event.getProperty().getValue();
-				// do something with the string
-			}
-		} );
+//		signatureField.addValueChangeListener( new Property.ValueChangeListener() {
+//			@Override
+//			public void valueChange(Property.ValueChangeEvent event) {
+//				String signature = (String) event.getProperty().getValue();
+//				// do something with the string
+//			}
+//		} );
 
 	}
 
