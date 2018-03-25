@@ -9,10 +9,13 @@ import com.biprom.amcal.amcalpompen.Upload.UploadInfoWindow;
 import com.biprom.amcal.amcalpompen.repositories.ProductRepository;
 import com.google.gwt.dev.PrecompileOnePerm;
 import com.vaadin.data.Binder;
+import com.vaadin.data.converter.StringToDoubleConverter;
 import com.vaadin.data.converter.StringToIntegerConverter;
 import com.vaadin.navigator.View;
+import com.vaadin.ui.Grid;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.renderers.NumberRenderer;
 import eu.maxschuster.vaadin.signaturefield.SignatureField;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,10 +38,10 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 	ProductRepository productRepository;
 	List<Product>artikelLijstOmschrijving;
 	List<Product> productList = new ArrayList<>();
-	TextField tfAantal = new TextField(  );
-	TextField tfOmschrijvingAmcal = new TextField(  );
+	TextField tfAantal = new TextField("0"  );
+	TextField tfOmschrijvingAmcal = new TextField( "hellowkes");
 
-	Binder<Product>productBinder;
+
 
 	@Autowired
 	public DetailGegevensTicketView(ProductSubWindow productSubWindow, ProductRepository productRepository) {
@@ -67,11 +70,23 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 		tbBenodigdMateriaal.getEditor().setEnabled( true );
 
-		tbBenodigdMateriaal.addColumn(Product::getOmschrijvingArtikelAmccal).setEditorComponent(tfOmschrijvingAmcal, Product::setOmschrijvingArtikelAmccal).setCaption("Omschrijving Amcal").setExpandRatio(2);
+		Binder<Product> productBinder = tbBenodigdMateriaal.getEditor().getBinder();
+		System.out.println( "binder = " +productBinder.toString() );
+		tbBenodigdMateriaal.addColumn(Product::getAantal)
+				.setCaption( "aantal" )
+				.setEditorBinding(productBinder
+						.forField(tfAantal)
+						.withConverter(new StringToIntegerConverter("Dit is geen cijfer"))
+						.bind(Product::getAantal, Product::setAantal)
 
-		productBinder = tbBenodigdMateriaal.getEditor().getBinder();
-		//Binder.Binding<Product, String> stringBinding = productBinder.bind( tfAantal, Product::getAantal, Product::setAantal );
-		//tbBenodigdMateriaal.addColumn( Product::getAantal ).setEditorBinding( stringBinding );
+				);
+
+
+
+		tbBenodigdMateriaal.addColumn(Product::getOmschrijvingArtikelAmccal).setEditorComponent(tfOmschrijvingAmcal, Product::setOmschrijvingArtikelAmccal).setCaption("Omschrijving Amcal").setExpandRatio(2);
+		tbBenodigdMateriaal.addColumn( Product::getOmschrijvingArtikelFabrikant ).setCaption("Omschrijving Grundfos");
+
+
 
 		lineBreakCounter.setSlow( true );
 		ulFoto.setReceiver( lineBreakCounter );
