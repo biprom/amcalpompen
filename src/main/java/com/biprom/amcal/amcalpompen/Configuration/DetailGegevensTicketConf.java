@@ -1,5 +1,6 @@
 package com.biprom.amcal.amcalpompen.Configuration;
 
+import com.biprom.amcal.amcalpompen.GridFS.GridFSService;
 import com.biprom.amcal.amcalpompen.SubWindows.ProductSubWindow;
 import com.biprom.amcal.amcalpompen.Views.AddProductSubWindowView;
 import com.biprom.amcal.amcalpompen.Views.DetailGegevensTicketView;
@@ -16,11 +17,13 @@ public class DetailGegevensTicketConf {
 	ProductRepository productRepository;
 	@Autowired
 	AddProductSubWindowView addProductSubWindowView;
+	@Autowired
+	GridFSService gridFSService;
 
 	@Bean
 	@Scope("prototype")
 	public DetailGegevensTicketView getDetailGegevensTicketView() {
-		return new DetailGegevensTicketView(productSubWindow(), productRepository);
+		return new DetailGegevensTicketView(productSubWindow(), productRepository, gridFSService);
 	}
 
 	@Bean

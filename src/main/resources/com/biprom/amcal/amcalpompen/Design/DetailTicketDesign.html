@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.0.5">
+  <meta name="package-mapping" content="org_tepi_imageviewer:org.tepi.imageviewer">
  </head>
  <body>
   <vaadin-vertical-layout size-full>
@@ -33,7 +34,13 @@
       <vaadin-text-field caption="Pompweek" _id="tfWeekPomp"></vaadin-text-field>
      </vaadin-horizontal-layout>
      <vaadin-text-area caption="Omschrijving pomp" width-full _id="taOmschrijvingPomp"></vaadin-text-area>
-     <vaadin-upload button-caption="Plaats foto" width-full _id="ulFoto"></vaadin-upload>
+     <vaadin-horizontal-layout width-full>
+      <vaadin-upload button-caption="Plaats foto" width-full _id="ulFoto"></vaadin-upload>
+      <vaadin-button plain-text _id="bSavePicture">
+        Sla foto op! 
+      </vaadin-button>
+      <org_tepi_imageviewer-image-viewer size-full _id="imageViewer"></org_tepi_imageviewer-image-viewer>
+     </vaadin-horizontal-layout>
      <vaadin-button style-name="friendly" plain-text _id="bAddProduct">
        Voeg materiaal toe 
      </vaadin-button>

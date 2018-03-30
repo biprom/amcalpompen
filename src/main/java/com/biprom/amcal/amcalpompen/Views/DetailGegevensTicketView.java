@@ -3,6 +3,7 @@ package com.biprom.amcal.amcalpompen.Views;
 import com.biprom.amcal.amcalpompen.Design.DetailTicketDesign;
 import com.biprom.amcal.amcalpompen.Entities.DetailTicket;
 import com.biprom.amcal.amcalpompen.Entities.Product;
+import com.biprom.amcal.amcalpompen.GridFS.GridFSService;
 import com.biprom.amcal.amcalpompen.SubWindows.ProductSubWindow;
 import com.biprom.amcal.amcalpompen.Upload.LineBreakCounter;
 import com.biprom.amcal.amcalpompen.Upload.UploadInfoWindow;
@@ -12,6 +13,7 @@ import com.vaadin.data.Binder;
 import com.vaadin.data.converter.StringToDoubleConverter;
 import com.vaadin.data.converter.StringToIntegerConverter;
 import com.vaadin.navigator.View;
+import com.vaadin.server.Resource;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -40,14 +42,16 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 	List<Product> productList = new ArrayList<>();
 	TextField tfAantal = new TextField("0"  );
 	TextField tfOmschrijvingAmcal = new TextField( "hellowkes");
+	GridFSService gridFSService;
 
 
 
 	@Autowired
-	public DetailGegevensTicketView(ProductSubWindow productSubWindow, ProductRepository productRepository) {
+	public DetailGegevensTicketView(ProductSubWindow productSubWindow, ProductRepository productRepository, GridFSService gridFSService) {
 
 		this.productSubWindow = productSubWindow;
 		this.productRepository = productRepository;
+		this.gridFSService = gridFSService;
 
 		datefAanmaakDatum.setValue( LocalDateTime.now() );
 
@@ -71,7 +75,6 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 		tbBenodigdMateriaal.getEditor().setEnabled( true );
 
 		Binder<Product> productBinder = tbBenodigdMateriaal.getEditor().getBinder();
-		System.out.println( "binder = " +productBinder.toString() );
 		tbBenodigdMateriaal.addColumn(Product::getAantal)
 				.setCaption( "aantal" )
 				.setEditorBinding(productBinder
@@ -109,6 +112,10 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 		signatureField.setHeight( "150px" );
 
 		hLayoutSign.addComponent( signatureField );
+
+		bSavePicture.addClickListener( e ->  gridFSService.storeFileToMongoDB( "/img.jpg","meta1", "meta2", "newbl.jpeg", detailTicket ));
+
+
 
 //		signatureField.addValueChangeListener( new Property.ValueChangeListener() {
 //			@Override
@@ -167,34 +174,35 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 	}
 
-	public void setDetailTicketViewWithData(DetailTicket detailTicket) {
+	public void setDetailTicketViewWithData(DetailTicket detailTicket1) {
 
-		tfArtikelNummer.setValue(detailTicket.getArtikelNummerInstallatie());
-		tfJaarInstallatie.setValue(detailTicket.getInstallatieJaar().toString());
-		tfWeekInstallatie.setValue(detailTicket.getInstallatieWeek().toString());
-		datefAanmaakDatum.setValue(detailTicket.getDetailAanmaakDatum());
-		taOmschrijvingInstallatie.setValue(detailTicket.getOmschrijvingInstallatie());
+		tfArtikelNummer.setValue(detailTicket1.getArtikelNummerInstallatie());
+		tfJaarInstallatie.setValue(detailTicket1.getInstallatieJaar().toString());
+		tfWeekInstallatie.setValue(detailTicket1.getInstallatieWeek().toString());
+		datefAanmaakDatum.setValue(detailTicket1.getDetailAanmaakDatum());
+		taOmschrijvingInstallatie.setValue(detailTicket1.getOmschrijvingInstallatie());
 
-		//cbArtikelNummerPomp1.setValue(detailTicket.getArtikelNummerPomp());
-		tfJaarPomp.setValue(detailTicket.getJaarPomp().toString());
-		tfWeekPomp.setValue(detailTicket.getWeekPomp().toString());
-		taOmschrijvingPomp.setValue(detailTicket.getOmschrijvingPomp());
+		//cbArtikelNummerPomp1.setValue(detailTicket1.getArtikelNummerPomp());
+		tfJaarPomp.setValue(detailTicket1.getJaarPomp().toString());
+		tfWeekPomp.setValue(detailTicket1.getWeekPomp().toString());
+		taOmschrijvingPomp.setValue(detailTicket1.getOmschrijvingPomp());
 
-		taVaststellingTechnieker.setValue(detailTicket.getVaststellingTechnieker());
-		taInterneOpmerkingen.setValue(detailTicket.getInterneOpmerkingen());
-		tfRamingUren.setValue("" + detailTicket.getRamingUren());
+		taVaststellingTechnieker.setValue(detailTicket1.getVaststellingTechnieker());
+		taInterneOpmerkingen.setValue(detailTicket1.getInterneOpmerkingen());
+		tfRamingUren.setValue("" + detailTicket1.getRamingUren());
 
-		checkbOpdrachtAfgewerkt.setValue(detailTicket.isOpdrachtAfgewerkt());
-		checkbDeeltelijksFacturatie.setValue(detailTicket.isTussentijdseFacturatieMogelijk());
-		checkbVerderInTePlannen.setValue(detailTicket.isVerderInTePlannen());
+		checkbOpdrachtAfgewerkt.setValue(detailTicket1.isOpdrachtAfgewerkt());
+		checkbDeeltelijksFacturatie.setValue(detailTicket1.isTussentijdseFacturatieMogelijk());
+		checkbVerderInTePlannen.setValue(detailTicket1.isVerderInTePlannen());
 
-		checkbBestekGoedgekeurd.setValue( detailTicket.isbBestekGoedgekeurd() );
-		checkbHerstellingBestek.setValue( detailTicket.isbHerstellingBestek() );
-		checkbHerstellingUitvoer.setValue( detailTicket.isbHerstellingUitvoer() );
-		checkbInterventie.setValue( detailTicket.isbInterventie() );
-		checkbOfferte.setValue( detailTicket.isbOfferte() );
-		checkbOfferteGoedgekeurd.setValue( detailTicket.isbOfferteGoedgekeurd() );
+		checkbBestekGoedgekeurd.setValue( detailTicket1.isbBestekGoedgekeurd() );
+		checkbHerstellingBestek.setValue( detailTicket1.isbHerstellingBestek() );
+		checkbHerstellingUitvoer.setValue( detailTicket1.isbHerstellingUitvoer() );
+		checkbInterventie.setValue( detailTicket1.isbInterventie() );
+		checkbOfferte.setValue( detailTicket1.isbOfferte() );
+		checkbOfferteGoedgekeurd.setValue( detailTicket1.isbOfferteGoedgekeurd() );
 
+		gridFSService.findFilesForDetailTicket( detailTicket );
 	}
 
 	public void setProductInProductTable(Collection<Product> selectedProducts){

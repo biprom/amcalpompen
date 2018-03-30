@@ -1,6 +1,7 @@
 package com.biprom.amcal.amcalpompen.Views;
 
 import com.biprom.amcal.amcalpompen.Design.MainDesign;
+import com.biprom.amcal.amcalpompen.Design.StockTellingDesign;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -48,6 +49,7 @@ public class MainView extends MainDesign implements View {
             subNavigator.navigateTo(NieuwTicketView.VIEW_NAME);
 
         });
+        stockButton.addClickListener( clickEvent -> subNavigator.navigateTo( StockTellingView.VIEW_NAME ) );
 
 
 

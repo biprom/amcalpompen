@@ -23,6 +23,7 @@ public class MainDesign extends VerticalLayout {
     protected Button nieuwButton;
     protected Button uitwerkingButton;
     protected Button invoegButton;
+    protected Button stockButton;
     protected Panel subPanel;
 
     public MainDesign() {

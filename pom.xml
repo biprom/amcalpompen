@@ -85,6 +85,11 @@
 			<version>8.3.2</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.vaadin.addons</groupId>
+			<artifactId>imageviewer</artifactId>
+			<version>0.6.0.v8</version>
+		</dependency>
     </dependencies>
 
 	<dependencyManagement>
