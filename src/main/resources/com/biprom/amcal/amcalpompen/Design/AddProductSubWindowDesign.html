@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout size-full>
+   <vaadin-css-layout style-name="v-component-group" width-full>
+    <vaadin-text-field _id="tfFilter"></vaadin-text-field>
+    <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="bClearFilter"></vaadin-button>
+   </vaadin-css-layout>
+   <vaadin-grid caption="Selecteer het materiaal aub" size-full data-item-type="com.biprom.amcal.amcalpompen.Entities.Product" _id="gridProducts" :expand>
+    <table>
+     <colgroup>
+      <col column-id="aantal" sortable>
+      <col column-id="artikelNummer" sortable>
+      <col column-id="eANNummer" sortable>
+      <col column-id="gewichtArtikel" sortable>
+      <col column-id="linkGrudfos" sortable>
+      <col column-id="omschrijvingArtikelFabrikant" sortable>
+      <col column-id="omschrijvingArtikelAmccal" sortable>
+      <col column-id="artikelGebruikt" sortable>
+      <col column-id="bruto2018" sortable>
+      <col column-id="prijsGroep2018" sortable>
+      <col column-id="korting" sortable>
+     </colgroup>
+     <thead>
+      <tr default>
+       <th plain-text column-ids="aantal">Aantal</th>
+       <th plain-text column-ids="artikelNummer">ArtikelNummer</th>
+       <th plain-text column-ids="eANNummer">EANNummer</th>
+       <th plain-text column-ids="gewichtArtikel">GewichtArtikel</th>
+       <th plain-text column-ids="linkGrudfos">LinkGrudfos</th>
+       <th plain-text column-ids="omschrijvingArtikelFabrikant">OmschrijvingArtikelFabrikant</th>
+       <th plain-text column-ids="omschrijvingArtikelAmccal">OmschrijvingArtikelAmccal</th>
+       <th plain-text column-ids="artikelGebruikt">ArtikelGebruikt</th>
+       <th plain-text column-ids="bruto2018">Bruto2018</th>
+       <th plain-text column-ids="prijsGroep2018">PrijsGroep2018</th>
+       <th plain-text column-ids="korting">Korting</th>
+      </tr>
+     </thead>
+     <tbody></tbody>
+    </table>
+   </vaadin-grid>
+   <vaadin-button style-name="primary" width-full plain-text _id="bAddProduct">
+     Voeg product toe 
+   </vaadin-button>
+  </vaadin-vertical-layout>
+ </body>
+</html>

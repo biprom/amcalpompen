@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-panel>
+   <vaadin-vertical-layout size-full>
+    <vaadin-label style-name="colored h2" width-full plain-text>
+      Stocktellig 2017 2018 
+    </vaadin-label>
+    <vaadin-horizontal-layout spacing="false" width-full>
+     <vaadin-text-field caption="Artikelcode" _id="tfArtikelCode"></vaadin-text-field>
+     <vaadin-text-field caption="Aantal" value="0" _id="tfStockAantal"></vaadin-text-field>
+     <vaadin-text-field caption="toevoeging omschrijving" _id="tfCommentaarToevoeging"></vaadin-text-field>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width-full>
+     <vaadin-text-field caption="Bulknummer" _id="tfBulkNummer"></vaadin-text-field>
+     <vaadin-text-field caption="aantal in bulk" value="0" _id="tfAantalInBulk"></vaadin-text-field>
+     <vaadin-vertical-layout size-auto>
+      <vaadin-check-box caption="pomp onderdeel" _id="checkbPompOnderdeel"></vaadin-check-box>
+      <vaadin-check-box caption="motorlager" _id="checkbMotorLager"></vaadin-check-box>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout size-auto>
+      <vaadin-check-box caption="complete pomp" _id="checkbCompletePomp"></vaadin-check-box>
+      <vaadin-check-box caption="complete motor" _id="checkbCompleteMotor"></vaadin-check-box>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout size-auto>
+      <vaadin-check-box caption="elektrisch materiaal" _id="checkbElekrischMateriaal"></vaadin-check-box>
+      <vaadin-check-box caption="mechanisch materiaal" _id="checkbMechanischMateriaal"></vaadin-check-box>
+     </vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-vertical-layout>
+     <vaadin-horizontal-layout width-full>
+      <vaadin-check-box caption="CR(N)1" _id="checkbCRN1"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)3" _id="checkbCRN3"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)5" _id="checkbCRN5"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)10" _id="checkbCRN10"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)15" _id="checkbCRN15"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)20" _id="checkbCRN20"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)32" _id="checkbCRN32"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)45" _id="checkbCRN45"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)90" _id="checkbCRN90"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)120" _id="checkbCRN120"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)150" _id="checkbCRN150"></vaadin-check-box>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout width-full>
+      <vaadin-check-box caption="CR(N)2" _id="checkbCRN2"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)4" _id="checkbCRN4"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)8" _id="checkbCRN8"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)16" _id="checkbCRN16"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)30" _id="checkbCRN30"></vaadin-check-box>
+      <vaadin-check-box caption="CR(N)60" _id="checkbCRN60"></vaadin-check-box>
+      <vaadin-text-field caption="Ander pomptype" _id="tfAnderPompType"></vaadin-text-field>
+     </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
+    <vaadin-horizontal-layout width-full>
+     <vaadin-horizontal-layout>
+      <vaadin-vertical-layout caption="asafdichting" spacing="false" size-auto margin="false">
+       <vaadin-check-box caption="diam12" _id="checkbDia12"></vaadin-check-box>
+       <vaadin-check-box caption="diam 16" _id="checkbDia16"></vaadin-check-box>
+       <vaadin-check-box caption="diam 28" _id="checkbDia28"></vaadin-check-box>
+       <vaadin-check-box caption="diam 38" _id="checkbDia38"></vaadin-check-box>
+       <vaadin-check-box caption="diam 48" _id="checkbDia48"></vaadin-check-box>
+      </vaadin-vertical-layout>
+      <vaadin-vertical-layout caption="asafdichting" spacing="false" size-auto margin="false">
+       <vaadin-check-box caption="HQQ*" _id="checkbHQQ"></vaadin-check-box>
+       <vaadin-check-box caption="AUU*" _id="checkbAUU"></vaadin-check-box>
+       <vaadin-check-box caption="RUU*" _id="checkbRUU"></vaadin-check-box>
+       <vaadin-check-box caption="BUB*" _id="checkbBUB"></vaadin-check-box>
+       <vaadin-check-box caption="BAQ*" _id="checkbBAQ"></vaadin-check-box>
+       <vaadin-check-box caption="BQQ*" _id="checkbBQQ"></vaadin-check-box>
+       <vaadin-check-box caption="GQQ*" _id="checkbGQQ"></vaadin-check-box>
+      </vaadin-vertical-layout>
+      <vaadin-vertical-layout caption="asafdichting" spacing="false" size-auto margin="false">
+       <vaadin-check-box caption="EPDM" _id="checkbEPDM"></vaadin-check-box>
+       <vaadin-check-box caption="VITON" _id="checkbVITON"></vaadin-check-box>
+      </vaadin-vertical-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-vertical-layout caption="kit slijtdelen" spacing="false" size-auto margin="false">
+      <vaadin-check-box caption="45 Neck wit (kamer)" _id="checkbNeckWit"></vaadin-check-box>
+      <vaadin-check-box caption="47a / lagertje" _id="checkbLagertje"></vaadin-check-box>
+      <vaadin-check-box caption="49c / neck ring waaier" _id="checkbNeckRingWaaier"></vaadin-check-box>
+      <vaadin-check-box caption="65 / neckringhouder (kamer)" _id="checkbNeckRingHouder"></vaadin-check-box>
+      <vaadin-check-box caption="47b / bodemlager (model A)" _id="checkbBodemLager"></vaadin-check-box>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout caption="pompkop - voet" spacing="false" size-auto margin="false">
+      <vaadin-check-box caption="2 pompkop (gietijzerdeel)" _id="checkbPompkapGietijzer"></vaadin-check-box>
+      <vaadin-check-box caption="77 pompkop (inox deel)" _id="checkbPompkapInox"></vaadin-check-box>
+      <vaadin-check-box caption="56 voetplaat" _id="checkbVoetplaat"></vaadin-check-box>
+      <vaadin-check-box caption="6 voetstuk" _id="checkbVoetstuk"></vaadin-check-box>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout caption="kit o ringen" spacing="false" size-auto margin="false">
+      <vaadin-check-box caption="37 O-ring" _id="checkbORing"></vaadin-check-box>
+      <vaadin-check-box caption="60 veertjes (in kopstuk)" _id="checkbVeertjes"></vaadin-check-box>
+     </vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout>
+     <vaadin-vertical-layout caption="waaiers / kamers" size-auto>
+      <vaadin-check-box caption="49 waaier" _id="checkbWaaier"></vaadin-check-box>
+      <vaadin-check-box caption="49a afgedraaide waaier" _id="checkbAfgedraaideWaaier"></vaadin-check-box>
+      <vaadin-check-box caption="3 topkamer" _id="checkbTopKamer"></vaadin-check-box>
+      <vaadin-check-box caption="4 kamer" _id="checkbKamer"></vaadin-check-box>
+      <vaadin-check-box caption="4a kamer met lager" _id="checkbKamerMetLager"></vaadin-check-box>
+      <vaadin-check-box caption="5a onderste kamer" _id="checkbOndersteKamer"></vaadin-check-box>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout caption="mantel / trekstang / treklat / pompas" size-auto>
+      <vaadin-check-box caption="26 trekstang (buitenkant)" _id="checkbTrekstang"></vaadin-check-box>
+      <vaadin-check-box caption="26a treklat (binnenwerk)" _id="checkbTreklat"></vaadin-check-box>
+      <vaadin-check-box caption="51 pompas" _id="checkbPompas"></vaadin-check-box>
+      <vaadin-check-box caption="55 mantel" _id="checkbMantel"></vaadin-check-box>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout caption="allerlei" size-auto>
+      <vaadin-check-box caption="7 afdekplaatjes" _id="checkbAfdekplaatjes"></vaadin-check-box>
+      <vaadin-check-box caption="39 flensdichtingen" _id="checkbFlensDichtingen"></vaadin-check-box>
+      <vaadin-check-box caption="201 flens" _id="checkbFlens"></vaadin-check-box>
+     </vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-button style-name="friendly" width-full plain-text _id="bSave">
+      sla stock- product op in database 
+    </vaadin-button>
+   </vaadin-vertical-layout>
+  </vaadin-panel>
+ </body>
+</html>
