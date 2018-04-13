@@ -27,7 +27,6 @@
       <vaadin-inline-date-time-field _id="datefAanmaakDatum"></vaadin-inline-date-time-field>
      </vaadin-horizontal-layout>
      <vaadin-text-area caption="Omschrijving installatie" width-full _id="taOmschrijvingInstallatie"></vaadin-text-area>
-     <vaadin-upload button-caption="Plaats foto" width-full _id="uplFotoInstallatie"></vaadin-upload>
      <vaadin-horizontal-layout caption="Pomp" width-full>
       <vaadin-combo-box caption="Artikelcode pomp" width-full data-item-type="com.biprom.amcal.amcalpompen.Entities.Product" _id="cbArtikelNummerPomp1" :expand></vaadin-combo-box>
       <vaadin-text-field caption="Pompjaar" _id="tfJaarPomp"></vaadin-text-field>
@@ -35,10 +34,7 @@
      </vaadin-horizontal-layout>
      <vaadin-text-area caption="Omschrijving pomp" width-full _id="taOmschrijvingPomp"></vaadin-text-area>
      <vaadin-horizontal-layout width-full>
-      <vaadin-upload button-caption="Plaats foto" width-full _id="ulFoto"></vaadin-upload>
-      <vaadin-button plain-text _id="bSavePicture">
-        Sla foto op! 
-      </vaadin-button>
+      <vaadin-upload button-caption="Plaats foto" icon="fonticon://Vaadin-Icons/e761" width-full _id="ulFoto"></vaadin-upload>
       <org_tepi_imageviewer-image-viewer size-full _id="imageViewer"></org_tepi_imageviewer-image-viewer>
      </vaadin-horizontal-layout>
      <vaadin-button style-name="friendly" plain-text _id="bAddProduct">

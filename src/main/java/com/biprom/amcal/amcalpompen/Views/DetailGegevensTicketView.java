@@ -32,7 +32,6 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 	SignatureField signatureField = new SignatureField(  );
 
 	LineBreakCounter lineBreakCounter = new LineBreakCounter();
-	UploadInfoWindow uploadInfoWindow;
 
 	DetailTicket detailTicket = new DetailTicket();
 
@@ -74,6 +73,10 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 		tbBenodigdMateriaal.getEditor().setEnabled( true );
 
+
+		//TODO
+		//save modified values to database instead just in the bean!!!
+
 		Binder<Product> productBinder = tbBenodigdMateriaal.getEditor().getBinder();
 		tbBenodigdMateriaal.addColumn(Product::getAantal)
 				.setCaption( "aantal" )
@@ -95,26 +98,24 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 		ulFoto.setReceiver( lineBreakCounter );
 
 		ulFoto.setImmediateMode( false );
-		ulFoto.setButtonCaption( "Upload File" );
-
-		uploadInfoWindow = new UploadInfoWindow( ulFoto, lineBreakCounter );
+		ulFoto.setButtonCaption( "bewaar bestand in dit datail" );
 
 		ulFoto.addStartedListener( event -> {
 
-			if (uploadInfoWindow.getParent() == null) {
-				UI.getCurrent().addWindow( uploadInfoWindow );
-			}
-			uploadInfoWindow.setClosable( false );
-		} );
-		ulFoto.addFinishedListener( event -> uploadInfoWindow.setClosable( true ) );
+
+				System.out.println( "Upload gestart" );
+		 });
+
+		ulFoto.addFinishedListener( event -> {
+			System.out.println( "Upload voltooid" );
+			gridFSService.storeFileToMongoDB( "/tmp/uploads/bl.jpeg","meta1", "meta2", "newbl.jpeg", detailTicket );
+
+		});
 
 		signatureField.setWidth( "350px" );
 		signatureField.setHeight( "150px" );
 
 		hLayoutSign.addComponent( signatureField );
-
-		bSavePicture.addClickListener( e ->  gridFSService.storeFileToMongoDB( "/img.jpg","meta1", "meta2", "newbl.jpeg", detailTicket ));
-
 
 
 //		signatureField.addValueChangeListener( new Property.ValueChangeListener() {
@@ -202,7 +203,7 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 		checkbOfferte.setValue( detailTicket1.isbOfferte() );
 		checkbOfferteGoedgekeurd.setValue( detailTicket1.isbOfferteGoedgekeurd() );
 
-		gridFSService.findFilesForDetailTicket( detailTicket );
+		gridFSService.findFilesForDetailTicket( detailTicket1 );
 	}
 
 	public void setProductInProductTable(Collection<Product> selectedProducts){

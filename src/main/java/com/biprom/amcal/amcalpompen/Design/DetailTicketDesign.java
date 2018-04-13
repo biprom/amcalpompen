@@ -38,13 +38,11 @@ public class DetailTicketDesign extends VerticalLayout {
     protected TextField tfWeekInstallatie;
     protected InlineDateTimeField datefAanmaakDatum;
     protected TextArea taOmschrijvingInstallatie;
-    protected Upload uplFotoInstallatie;
     protected ComboBox<com.biprom.amcal.amcalpompen.Entities.Product> cbArtikelNummerPomp1;
     protected TextField tfJaarPomp;
     protected TextField tfWeekPomp;
     protected TextArea taOmschrijvingPomp;
     protected Upload ulFoto;
-    protected Button bSavePicture;
     protected ImageViewer imageViewer;
     protected Button bAddProduct;
     protected Grid<com.biprom.amcal.amcalpompen.Entities.Product> tbBenodigdMateriaal;
