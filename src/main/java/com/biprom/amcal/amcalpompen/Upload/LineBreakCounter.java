@@ -18,7 +18,7 @@ public class LineBreakCounter implements Upload.Receiver {
     public OutputStream receiveUpload(String filename,
                                       String MIMEType) {
         FileOutputStream fos = null; // Output stream to write to
-        file = new File("/tmp/uploads/" + filename);
+        file = new File("/Users/bramvandenberghe/uplPicToDB/" + filename);
         try {
             // Open the file for writing.
             fos = new FileOutputStream(file);

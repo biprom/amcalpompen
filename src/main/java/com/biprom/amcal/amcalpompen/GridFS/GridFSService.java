@@ -69,7 +69,7 @@ public class GridFSService implements GridFsOperations {
                         System.out.println(file.getContentType());
 
                         //save as another image
-                        file.writeTo("/Users/bramvandenberghe/dump/newbie.jpeg");
+                        file.writeTo("/Users/bramvandenberghe/recPicFromDB/newbie.jpeg");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

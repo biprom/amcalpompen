@@ -108,7 +108,7 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 		ulFoto.addFinishedListener( event -> {
 			System.out.println( "Upload voltooid" );
-			gridFSService.storeFileToMongoDB( "/tmp/uploads/bl.jpeg","meta1", "meta2", "newbl.jpeg", detailTicket );
+			gridFSService.storeFileToMongoDB( "/Users/bramvandenberghe/uplPicToDB/IMG_0008.JPG","meta1", "meta2", "newbl.jpeg", detailTicket );
 
 		});
 
