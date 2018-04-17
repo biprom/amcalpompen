@@ -5,6 +5,8 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSFile;
+import com.vaadin.server.FileResource;
+import com.vaadin.server.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -25,6 +27,7 @@ public class GridFSService implements GridFsOperations {
     GridFsTemplate gridFsTemplate;
     String imageField;
     List<String>idPictures = new ArrayList<>(  );
+    List<Resource> resources = new ArrayList<Resource>();
 
     @Autowired
     public GridFSService(GridFsTemplate gridFsTemplate)  {
@@ -57,7 +60,7 @@ public class GridFSService implements GridFsOperations {
 
     public void findFilesForDetailTicket (DetailTicket detailTicket){
 
-            System.out.println( "detailticket :" + detailTicket.getOmschrijvingPomp()  );
+            resources.clear();
 
             for (String str : detailTicket.getPictureList()){
 
@@ -65,11 +68,8 @@ public class GridFSService implements GridFsOperations {
 
                 for (GridFSDBFile file : result) {
                     try {
-                        System.out.println(file.getFilename());
-                        System.out.println(file.getContentType());
-
-                        //save as another image
-                        file.writeTo("/Users/bramvandenberghe/recPicFromDB/newbie.jpeg");
+                        file.writeTo("/Users/bramvandenberghe/recPicFromDB/" + file.getFilename());
+                        resources.add(new FileResource(new File("/Users/bramvandenberghe/recPicFromDB/" + file.getFilename())));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -79,10 +79,14 @@ public class GridFSService implements GridFsOperations {
 
             }
 
-
-
-
     }
+
+    public List<Resource>getResources(){
+
+        return resources;
+    }
+
+
 
 
     @Override

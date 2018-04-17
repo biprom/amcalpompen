@@ -31,32 +31,7 @@ public class LineBreakCounter implements Upload.Receiver {
         return fos; // Return the output stream to write to
     }
 
-//    @Override
-//    public OutputStream receiveUpload(final String filename, final String MIMEType) {
 
-//
-//        counter = 0;
-//        total = 0;
-//        return new OutputStream() {
-//            private static final int searchedByte = '\n';
-//
-//
-//            @Override
-//            public void write(final int b) {
-//                total++;
-//                if (b == searchedByte) {
-//                    counter++;
-//                }
-//                if (sleep && total % 1000 == 0) {
-//                    try {
-//                        Thread.sleep(100);
-//                    } catch (final InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        };
-//    }
 
     public int getLineBreakCount() {
         return counter;

@@ -20,7 +20,9 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.renderers.NumberRenderer;
 import eu.maxschuster.vaadin.signaturefield.SignatureField;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.tepi.imageviewer.ImageViewer;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -35,22 +37,28 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 	DetailTicket detailTicket = new DetailTicket();
 
+
+
 	ProductSubWindow productSubWindow;
+	ImageSubWindow imageSubWindow;
 	ProductRepository productRepository;
 	List<Product>artikelLijstOmschrijving;
 	List<Product> productList = new ArrayList<>();
 	TextField tfAantal = new TextField("0"  );
 	TextField tfOmschrijvingAmcal = new TextField( "hellowkes");
 	GridFSService gridFSService;
+	File fileToDelete;
+	DetailTicket dummyTicket;
 
 
 
 	@Autowired
-	public DetailGegevensTicketView(ProductSubWindow productSubWindow, ProductRepository productRepository, GridFSService gridFSService) {
+	public DetailGegevensTicketView(ImageSubWindow imageSubWindow, ProductSubWindow productSubWindow, ProductRepository productRepository, GridFSService gridFSService) {
 
 		this.productSubWindow = productSubWindow;
 		this.productRepository = productRepository;
 		this.gridFSService = gridFSService;
+		this.imageSubWindow = imageSubWindow;
 
 		datefAanmaakDatum.setValue( LocalDateTime.now() );
 
@@ -102,13 +110,28 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 		ulFoto.addStartedListener( event -> {
 
-
-				System.out.println( "Upload gestart" );
 		 });
 
 		ulFoto.addFinishedListener( event -> {
-			System.out.println( "Upload voltooid" );
-			gridFSService.storeFileToMongoDB( "/Users/bramvandenberghe/uplPicToDB/IMG_0008.JPG","meta1", "meta2", "newbl.jpeg", detailTicket );
+
+			gridFSService.storeFileToMongoDB( "/Users/bramvandenberghe/uplPicToDB/"+event.getFilename(),"meta1", "meta2", event.getFilename(), detailTicket );
+			fileToDelete = new File("/Users/bramvandenberghe/uplPicToDB/" + event.getFilename());
+
+			try{
+
+				fileToDelete = new File("/Users/bramvandenberghe/uplPicToDB/" + event.getFilename());
+
+				if(fileToDelete.delete()){
+					System.out.println(fileToDelete.getName() + " is deleted!");
+				}else{
+					System.out.println("Delete operation is failed.");
+				}
+
+			}catch(Exception e){
+
+				e.printStackTrace();
+
+			}
 
 		});
 
@@ -117,22 +140,18 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 
 		hLayoutSign.addComponent( signatureField );
 
+		bReceivePictures.addClickListener(e -> {
+			imageSubWindow.setImageResources( gridFSService.getResources() );
+			UI.getCurrent().addWindow( imageSubWindow );
+			imageSubWindow.setHeight( "600px" );
+			imageSubWindow.setWidth( "1200px" );
+			imageSubWindow.setModal( true );
+		});
 
-//		signatureField.addValueChangeListener( new Property.ValueChangeListener() {
-//			@Override
-//			public void valueChange(Property.ValueChangeEvent event) {
-//				String signature = (String) event.getProperty().getValue();
-//				// do something with the string
-//			}
-//		} );
 
 	}
 
-	public void addSelectedProductsToTable(Collection<Product> selectedProducts){
 
-		tbBenodigdMateriaal.setItems( selectedProducts )  ;
-		tbBenodigdMateriaal.getDataProvider().refreshAll();
-	}
 
 	public void setCBArtikelNummerPomp(){
 			artikelLijstOmschrijving = productRepository.findByOmschrijvingArtikelFabrikantContains("");
@@ -204,6 +223,8 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 		checkbOfferteGoedgekeurd.setValue( detailTicket1.isbOfferteGoedgekeurd() );
 
 		gridFSService.findFilesForDetailTicket( detailTicket1 );
+
+		dummyTicket = detailTicket1;
 	}
 
 	public void setProductInProductTable(Collection<Product> selectedProducts){
@@ -213,20 +234,7 @@ public class DetailGegevensTicketView extends DetailTicketDesign implements View
 		}
 		tbBenodigdMateriaal.setItems( productList );
 
-
-		//tbBenodigdMateriaal.getColumn( "omschrijvingArtikelAmccal" ).setEditorComponent( textfield1);
-		//tbBenodigdMateriaal.getColumn( "aantal" ).setEditorComponent( textfield2);
-		//tbBenodigdMateriaal.getEditor().addSaveListener( e -> Notification.show( ("aantal is gewijzigd naar " + textfield2.getValue().toString()) ) );
-
-		//Binder<Product>productBinder = tbBenodigdMateriaal.getEditor().getBinder();
-		//Binder.Binding<Product, Integer> aantalBinder = productBinder.forField( textfield1 ).withConverter( new StringToIntegerConverter( "gelieve een nummer te plaatsen" ) ).bind( Product::getAantal, Product::setAantal );
-		//tbBenodigdMateriaal.getColumn( "aantal" ).setEditorBinding( aantalBinder );
-		//productBinder.readBean( new Product(5) );
 	}
 
-	//public void setProduct(Product product){
-	//	this.product = product;
-	//	this.productBinder.setBean( this.product );
-	//}
 
 }

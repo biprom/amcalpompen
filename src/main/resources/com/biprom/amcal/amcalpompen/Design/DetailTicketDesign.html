@@ -34,8 +34,12 @@
      </vaadin-horizontal-layout>
      <vaadin-text-area caption="Omschrijving pomp" width-full _id="taOmschrijvingPomp"></vaadin-text-area>
      <vaadin-horizontal-layout width-full>
-      <vaadin-upload button-caption="Plaats foto" icon="fonticon://Vaadin-Icons/e761" width-full _id="ulFoto"></vaadin-upload>
-      <org_tepi_imageviewer-image-viewer size-full _id="imageViewer"></org_tepi_imageviewer-image-viewer>
+      <vaadin-vertical-layout>
+       <vaadin-upload button-caption="Plaats foto" icon="fonticon://Vaadin-Icons/e761" width-full _id="ulFoto"></vaadin-upload>
+       <vaadin-button style-name="primary" width-full plain-text _id="bReceivePictures">
+         ontvang foto's 
+       </vaadin-button>
+      </vaadin-vertical-layout>
      </vaadin-horizontal-layout>
      <vaadin-button style-name="friendly" plain-text _id="bAddProduct">
        Voeg materiaal toe 
